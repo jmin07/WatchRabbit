@@ -1,0 +1,74 @@
+.layoutside{
+    background-color: whitesmoke;
+}
+.layoutmain{
+    background-color: coral;
+}
+
+.title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    text-align: center;
+}.titletext{
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 80px;
+}.inputstyle{
+    height: 25px;
+    width: 300px;
+    border: none;
+    border-radius: 7px;
+    outline: none;
+    box-shadow: 1px 1px 5px 1px rgb(170, 89, 22);
+}.selectstyle{
+    height: 25px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 7px;
+    outline: none;
+    box-shadow: 1px 1px 5px 1px rgb(170, 89, 22);
+}.inputbutton{
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(247, 200, 156);;
+    margin-left: -42px;
+    padding-bottom: 3px;
+    cursor: pointer;
+}.inputbutton:hover{
+    background-color: rgb(182, 149, 119);
+}.mainbutton{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(247, 200, 156);
+    width: 200px;
+    height: 40px;
+    box-shadow: 1px 1px 5px 1px rgb(170, 89, 22);
+    cursor: pointer;
+}.mainbutton:hover{
+    background-color: rgb(182, 149, 119);
+}.img{
+    position: absolute;
+    width: 200px;
+    top: -10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 60%;  
+    z-index: -1;  
+}
+
+.gologin{
+    position: absolute;
+    top: 3%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+

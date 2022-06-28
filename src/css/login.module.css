@@ -1,0 +1,55 @@
+.layoutside{
+    background-color: whitesmoke;
+}.gif{
+    height: 100%;
+    position: absolute;
+}
+.layoutmain{
+    background-color: coral;
+    z-index: 1;
+}
+
+.loginbox{
+    background-color: rgb(253, 240, 228);
+    width: 450px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    box-shadow: 1px 1px 5px 1px rgb(170, 89, 22);
+    border: none;
+    border-radius: 20px;
+}.mainbutton{
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(247, 200, 156);
+    width: auto;
+    height: 30px;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px 1px rgb(170, 89, 22);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}.titletext{
+    font-size: 50px;
+    color: rgb(255, 198, 133);
+}.inputstyle{
+    height: 30px;
+    width: 150px;
+    border: none;
+    border-radius: 7px;
+    outline: none;
+    box-shadow: 1px 1px 5px 1px rgb(170, 89, 22);
+}
+.gohome{
+    position: absolute;
+    top: 3%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+
