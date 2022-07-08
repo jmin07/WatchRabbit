@@ -1,0 +1,106 @@
+#모든 데이터앞에는 "getDATA_" 라고 붙여서 기존 정보랑 구분 하면 좋을 듯.
+
+임의: 취득한 순서 "article-number" int, +자동인덱스증가
+임의: 정보얻은 시간 "article-Time" DATETIME #날짜와시간을 동시에 나타냄
+제품명 (코웨이제습기) "article-title"  varchar(80)
+물품종류 (생활가전) "article-category"  varchar(50)
+가격 (30,000원) "article-price"  int #될 수 있다면 unsigned int
+지역 (인천) X **글 내부에서는 볼 수 없음.**   임의 "Province-name"
+#동네를 보고 자동으로 분류되게 해야겠다. / 동이름은 안겹치겠지
+동네 (연수구 동춘동) "region-name"  varchar(20)
+작성자 (바다) "nickname"  varchar(40)
+매너온도 (37.5) "article-profile-right" TINYINT # '127도' 까지 표현 가능. 충분함.
+
+#여기서부터는 다루기 어려운 데이터
+글내용 (글내용) "article-detail"  #
+"article-counts" **순서대로 있음, 1개 임**  # 순서대로 잘라와야쓸수 있을 듯.
+{
+    관심 (6) "attention" 
+    채팅 (23) "chat" 
+    조회 (117) "lookup" 
+}
+-> 일단 텍스트로 받아와서 분리는 나중에 하기.
+
+#여기까지 가져올 데이터의 갯수는 8 + 1(3개) = 9개 (데이터로써는 11개)
+
+#[추가 가능 사항]
+<time>끌올 3일 전</time>
+가격제안, 거래완료. -> 모바일에서는 뜸.
+
+------------------------------------------------
+#  1차 데이터 기입하기 
+칼럼  /  데이터형 정의  /  기타
+article-number /  int  /  AUTO_INCREMENT
+article-getTime  /  DATETIME
+article-title  / varchar(80)
+article-category  /  varchar(50)
+article-price  / unsigned int 
+Province-name  / varchar(20)
+region-name  /  varchar(20)
+nickname  /  varchar(40)
+
+BIGINT
+TEXT
+
+#매너온도, 글 내용, article-counts는 생략된 상태.
+------------------------------------------------
+
+ * [DB설계하기.] 2022.06.30. 3차 정리
+ * 고유번호 "URLcode" from  (head_URL) to "varchar(50)"
+ * 글제목 "itemTitle" from (head_itemTitle) to "varchar(100)"
+ * 닉네임 "nickname" from (body_nickname) to "varchar(50)"
+ * 물품의 종류 "classification" from (head_classification) to "varchar(50)"
+ * 가격 "price" from (head_price) to "unsigned int"
+ * 지역 "region" from (head_region) to "varchar(40)"
+ * 내용 "description" from (body_detil) to "TEXT"
+ * 관심,채팅,조회 "Attention" from (body_Attention) to "varchar(100)"
+ * 데이터취득일 "Date" from (자동) to "DATETIME"
+
+=> create code:
+CREATE TABLE sceondRabbit (  
+    create_time DATETIME,
+    URLcode VARCHAR(50),
+    itemTitle varchar(100),
+    price int UNSIGNED,
+    classification VARCHAR(50),
+    nickname varchar(40),
+    region varchar(40),
+    description TEXT,
+    Attention varchar(100)
+) DEFAULT CHARSET UTF8;
+
+=> Insert code: #되는지 확인해야함 !
+
+INSERT INTO firstrabbit 
+(getTime, URLcode, itemTitle, price, classification, nickname, region, description, Attention)
+VALUES(
+'2022-06-30', 
+'https://www.daangn.com/articles/423413719', 
+'아이패드 에어 4 64GB wifi + 애플펜슬 2세대 + 패드 케이스 박스 판매', 
+'750,000원',
+'디지털기기', 
+'헬로우나비', 
+'대구 달성군 가창면', 
+'\n' +
+      '            아이패드 에어 4 64GB wifi + 애플펜슬 2세대 + 패드 케이스 박스 판매\n' +
+      '\n' +
+      '충전기 없습니다 ㅠㅠ\n' +
+      '\n' +
+      '색상은 애쉬그레이 색상입니다 !\n' +
+      '기기를 사고 많이 쓰지 않아서 아주 깨끗합니다\n' +
+      '\n' +
+      '아이패드 케이스는 가져가실분은 가져가세요~\n' +
+      '\n' +
+      '케이스 상태 좋지 않아서 패드 사실때 말씀 해주시면 같이 드립니다 !\n' +
+      '\n' +
+      '확실히 구매하실분만 연락주세요 !\n' +
+      '\n' +
+      '수성호텔 인근에서 거래할수있습니다😊\n', 
+'\n' +
+      '          관심 8 ∙\n' +
+      '            채팅 0\n' +
+      '           ∙\n' +
+      '          조회 178\n' +
+      '        ')
+
+------------------------------------------------
