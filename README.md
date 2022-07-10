@@ -37,6 +37,6 @@ WatchRabbit의 캐릭터는 Agent.Rabbit인데 토끼의 얼굴에 요원처럼 
 
 ## ✨ WatchRbbit 의 기술테크
 
-![Version 1.0](https://user-images.githubusercontent.com/103296979/178128689-a6353386-d51e-46d0-8d88-9d9f76d868a0.png)
+<img src=https://user-images.githubusercontent.com/103296979/178128689-a6353386-d51e-46d0-8d88-9d9f76d868a0.png width="700" height="500" />
 
 
