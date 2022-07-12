@@ -8,14 +8,14 @@ export const CenterDiv = styled.div`
   box-shadow: ${(props) => props.boxShadow};
   background-color: ${(props) => props.backgroundColor};
   padding: ${(props) => props.padding};
-  border: none;
   border-radius: ${(props) => props.borderRadius || "20px"};
+  text-align: ${(props) => props.textAlign || "center"};
+  border: none;
   margin: auto;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: ${(props) => props.textAlign || "center"};
 `;
 
 export const MainDiv = styled.div`
@@ -260,4 +260,3 @@ export const MainInput = styled.input`
   left: 35%;
   top: 38%;
 `;
-
