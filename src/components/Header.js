@@ -1,5 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Img } from "../style/styled";
+import { Outlet } from "react-router-dom";
+import SelectArea from "../components/SelectArea";
 
 import {
   Button,
@@ -10,37 +12,31 @@ import {
   Grid,
   Container,
   Tooltip,
-  Zoom,
+  Avatar,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
-// 로그인 모달
+// 로그인 모달 import
 import Modal from "react-modal";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Login from "./Login";
 import CloseIcon from "@mui/icons-material/Close";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import "../style/font.css";
 
 export default function Header() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [object, setObject] = useState("");
-  let location = useLocation();
+  const [loginDone, setLoginDone] = useState();
+
+  function getLogin(loginResult) {
+    setLoginDone(loginResult);
+  }
 
   const onSubmit = (e) => {
     e.preventDefault();
-
   };
 
-  if (location.pathname === "/") {
-    return null;
-  } else if (location.pathname === "/signup") {
-    return null;
-  } else if (location.pathname === "/forgotpw") {
-    return null;
-  }
   return (
     <>
       <Container maxWidth="lg">
@@ -76,7 +72,7 @@ export default function Header() {
                   </Button>
                 </Link>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={6}>
                 <Paper
                   component="form"
                   action="/data"
@@ -89,6 +85,7 @@ export default function Header() {
                   }}
                   onSubmit={onSubmit}
                 >
+                  <SelectArea />
                   <InputBase
                     sx={{ ml: 2, flex: 1 }}
                     placeholder="검색할 물품을 입력하세요"
@@ -98,25 +95,28 @@ export default function Header() {
                   </IconButton>
                 </Paper>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={2}>
                 <Box>
                   <NotificationsIcon
                     sx={{ color: "coral", m: 2, verticalAlign: "middle" }}
                   />
-                  {object}
                 </Box>
               </Grid>
               <Grid item xs={1}>
                 {/* 로그인 모달 버튼 */}
-                {/* <Tooltip title="Login" arrow TransitionComponent={Zoom}>
-                  <IconButton onClick={() => setModalOpen(true)}>
-                    <AccountCircleIcon
-                      fontSize="large"
-                      sx={{ color: "dimgray" }}
-                    />
-                  </IconButton>
-                </Tooltip> */}
-                <Button color="warning" sx={{m:1}} onClick={()=> setModalOpen(true)}>login</Button>
+                <Button
+                  color="warning"
+                  sx={{ m: 1 }}
+                  onClick={() => setModalOpen(true)}
+                >
+                  <Avatar>
+                    {loginDone ? (
+                      <Tooltip title="로그아웃">
+                        <Img src="/img/WRN.png" width="50px" />
+                      </Tooltip>
+                    ) : null}
+                  </Avatar>
+                </Button>
               </Grid>
             </Grid>
           </Box>
@@ -148,15 +148,15 @@ export default function Header() {
             >
               <CloseIcon color="warning" />
             </IconButton>
-            <Login />
+            <Login getLogin={getLogin} />
             <Grid container>
               <Grid item xs sx={{ ml: 3 }}>
-                <Link to="forgotpw" style={{ color: "dodgerblue" }}>
+                <Link to="/main/forgotpw" style={{ color: "dodgerblue" }}>
                   비밀번호 찾기
                 </Link>
               </Grid>
               <Grid item sx={{ mr: 3 }}>
-                <Link to="signup" style={{ color: "dodgerblue" }}>
+                <Link to="/main/signup" style={{ color: "dodgerblue" }}>
                   회원가입
                 </Link>
               </Grid>
@@ -164,7 +164,7 @@ export default function Header() {
           </Modal>
 
           <Box>
-            <Link to="home" style={{ textDecorationLine: "none" }}>
+            <Link to="/main/home" style={{ textDecorationLine: "none" }}>
               <Button
                 sx={{
                   ml: 6,
@@ -179,7 +179,7 @@ export default function Header() {
               </Button>
             </Link>
 
-            <Link to="data" style={{ textDecorationLine: "none" }}>
+            <Link to="/main/data" style={{ textDecorationLine: "none" }}>
               <Button
                 sx={{
                   ml: 2,
@@ -194,7 +194,7 @@ export default function Header() {
               </Button>
             </Link>
 
-            <Link to="trace" style={{ textDecorationLine: "none" }}>
+            <Link to="/main/trace" style={{ textDecorationLine: "none" }}>
               <Button
                 sx={{
                   ml: 2,
@@ -211,6 +211,7 @@ export default function Header() {
           </Box>
         </Grid>
       </Container>
+      <Outlet />
     </>
   );
 }

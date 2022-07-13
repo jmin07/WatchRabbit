@@ -1,15 +1,10 @@
-import {
-  TextField,
-  Button,
-  Typography,
-  Box,
-  Container,
-} from "@mui/material";
+import { TextField, Button, Typography, Box, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 
 import { postGoogle, postLoginData, postKakao } from "../api";
 import { Img } from "../style/styled";
+import { useState } from "react";
 
 const GoogleButton = styled(Button)({
   backgroundColor: "white",
@@ -26,7 +21,9 @@ const KakaoButton = styled(Button)({
   },
 });
 
-export default function Login() {
+export default function Login({ getLogin }) {
+  const [loginResult, setLoginResult] = useState();
+
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
@@ -54,6 +51,12 @@ export default function Login() {
     response.then((res) => {
       console.log("구글로 이동");
     });
+    response.then((res) => {
+      const isSuccess = res.isSuccess;
+      const profile_image = res.result.profile_image;
+      setLoginResult({ isSuccess, profile_image });
+    });
+    getLogin(loginResult); //loginResult
   };
   const kakaoClick = () => {
     const data = "/auth/kakao";
@@ -62,6 +65,12 @@ export default function Login() {
     response.then((res) => {
       console.log("카카오로 이동");
     });
+    response.then((res) => {
+      const isSuccess = res.isSuccess;
+      const profile_image = res.result.profile_image;
+      setLoginResult({ isSuccess, profile_image });
+    });
+    getLogin(loginResult); //loginResult
   };
   return (
     <>
