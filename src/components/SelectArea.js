@@ -1,5 +1,5 @@
 import data from "../data/area";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 export default function SelectArea() {
   // let countries = Object.keys(data); // key ['서울시', '안양시', '수원시']
@@ -8,9 +8,13 @@ export default function SelectArea() {
   const [currentCountry, setCurrentCountry] = useState("서울");
   const [currentCity, setCurrentCity] = useState(data[currentCountry][0]);
 
-  const countries = Object.keys(data);
-  const cities = data[currentCountry];
+  // const countries = Object.keys(data);
+  // const cities = data[currentCountry];
+  const countries = useMemo(() => Object.keys(data), []);
+  const cities = useMemo(() => data[currentCountry], [currentCountry]);
 
+  console.log(currentCountry);
+  console.log(currentCity);
   // function pushValue(countriesArray, selectTag) {
   //   //data를 순회한 후 data를 담은 option을 select에 추가
   //   countriesArray.forEach((element) => {
@@ -32,7 +36,9 @@ export default function SelectArea() {
   // pushValue(countries, selectId1); //slectId1은 select태그전체
   // pushValue(city, selectId2);
   const onChange = (e) => {
-    setCurrentCountry(e.target.value);
+    const currentCountry = e.target.value;
+    setCurrentCountry(currentCountry);
+    setCurrentCity(data[currentCountry][0]);
   };
   const onChange2 = (e) => {
     setCurrentCity(e.target.value);
@@ -45,7 +51,7 @@ export default function SelectArea() {
         id="selectId1"
         onChange={onChange}
         value={currentCountry}
-        style={{padding:"5px", border:"none", outline:"none"}}
+        style={{ padding: "5px", border: "none", outline: "none" }}
       >
         {countries.map((country, index) => (
           <option key={index} value={country}>
@@ -58,8 +64,7 @@ export default function SelectArea() {
         id="selectId2"
         value={currentCity}
         onChange={onChange2}
-        style={{padding:"5px", border:"none",outline:"none"}}
-
+        style={{ padding: "5px", border: "none", outline: "none" }}
       >
         {cities.map((city, index) => (
           <option key={index} value={city}>
