@@ -30,7 +30,12 @@ WatchRabbit의 캐릭터는 Agent.Rabbit인데 토끼의 얼굴에 요원처럼 
 3. 누적된 정보를 바탕으로 서버가 분석하여 그래프로 과거의 정보와 미래 예측되는 정보 데이터를 그래프로 한 눈에 보여줍니다.
 4. 원하는 제품의 지역, 최저가격, 최대가격 등 조건을 지정하여 감시 기능을 켜놓으면 메일을 통하여 해당 제품이 신규 등록이 되거나 변동이 있는지 알림을 줍니다.
 
-## ✨ WatchRbbit 의 기술테크
-<img src=https://user-images.githubusercontent.com/103296979/178169796-9f1d8bfc-4999-4325-8d56-2ddaba811704.png width="500" height="400" />
-
-
+## ✨ WatchRbbit 의 technical architecture
+- version 1.0
+  - process
+    - 도메인 -> NGINX -> 백엔드 서버(프론트)
+    
+  - Improvements
+    - 프론트와 백엔드 분리
+    
+<img src=https://user-images.githubusercontent.com/103296979/178884780-e37616e0-4d4c-4eee-b018-a05e74dad083.svg width="500" height="400" />
