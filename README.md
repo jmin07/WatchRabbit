@@ -38,4 +38,8 @@ WatchRabbit의 캐릭터는 Agent.Rabbit인데 토끼의 얼굴에 요원처럼 
   - Improvements
     - 프론트와 백엔드 분리
     
+  - 참고내용
+    - browser->front-server->backend-server (proxy)
+    - reverse 적용 여부
+ 
 <img src=https://user-images.githubusercontent.com/103296979/178884780-e37616e0-4d4c-4eee-b018-a05e74dad083.svg width="500" height="400" />
