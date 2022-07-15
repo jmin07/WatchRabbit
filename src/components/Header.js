@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Img } from "../style/styled";
 import { Outlet } from "react-router-dom";
-// import SelectArea from "../components/SelectArea";
+import SelectArea from "../components/SelectArea";
 
 import {
   Button,
@@ -90,7 +90,7 @@ export default function Header() {
                   }}
                   onSubmit={onSubmit}
                 >
-                  {/* <SelectArea /> */}
+                  <SelectArea />
                   <InputBase
                     sx={{ ml: 2, flex: 1 }}
                     placeholder="검색할 물품을 입력하세요"
@@ -115,9 +115,9 @@ export default function Header() {
                   onClick={() => setModalOpen(true)}
                 >
                   <Avatar>
-                    {loginDone ? (
+                    {loginDone.isSuccess ? (
                       <Tooltip title="로그아웃">
-                        <Img src="/img/WRN.png" width="50px" />
+                        <Img src={loginDone.profile_image} width="50px" />
                       </Tooltip>
                     ) : null}
                   </Avatar>

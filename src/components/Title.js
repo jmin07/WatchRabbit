@@ -8,7 +8,7 @@ import {
   Zoom,
   Tooltip,
 } from "@mui/material";
-// import SearchIcon from "@mui/icons-material/Search";
+import SearchIcon from "@mui/icons-material/Search";
 
 import { CenterDiv, Img } from "../style/styled";
 import Modal from "react-modal";
@@ -21,6 +21,7 @@ import HomeIcon from "@mui/icons-material/Home";
 //
 import { TitleContext } from "../contexts/TitleContext";
 import React, { useContext, useState } from "react";
+import SelectArea from "./SelectArea";
 //
 Modal.setAppElement("Title");
 
@@ -60,7 +61,7 @@ export default function Title() {
         >
           <Grid item sx={{ margin: 3 }}></Grid>
         </Grid>
-        <Grid container sx={{ mt: 25 }}>
+        <Grid container sx={{ mt: 27 }}>
           <Grid item xs={12}>
             <Box
               sx={{
@@ -75,8 +76,8 @@ export default function Title() {
               <Img src="/img/carrot.png" width="65px" />
             </Box>
           </Grid>
-          <Grid item xs={3} sx={{ mt: 5 }}></Grid>
-          <Grid item xs={6} sx={{ mt: 4 }}>
+          <Grid item xs={2} sx={{ mt: 5 }}></Grid>
+          <Grid item xs={8} sx={{ mt: 7 }}>
             {/* 검색창 */}
             <Paper
               component="form"
@@ -84,23 +85,24 @@ export default function Title() {
                 p: "2px 4px",
                 display: "flex",
                 alignItems: "center",
-                width: "60%",
+                width: "98%",
               }}
               onSubmit={onSubmit}
             >
+              <SelectArea />
               <InputBase
                 sx={{ ml: 2, flex: 1 }}
                 placeholder="검색할 물품을 입력하세요"
               />
               <IconButton type="submit" sx={{ p: "10px" }}>
-                {/* <SearchIcon /> */}
+                <SearchIcon />
               </IconButton>
             </Paper>
           </Grid>
 
-          <Grid item xs={12} sx={{ m: 3 }}>
+          <Grid item xs={12} sx={{ m: 7 }}>
             <Tooltip title="Main Page" arrow TransitionComponent={Zoom}>
-              <IconButton onClick={()=>setTitleOn(false)}>
+              <IconButton onClick={() => setTitleOn(false)}>
                 <HomeIcon fontSize="large" />
               </IconButton>
             </Tooltip>
