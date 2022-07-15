@@ -1,4 +1,4 @@
-import data from "../data/area";
+import data from "../data";
 import { useState, useMemo } from "react";
 
 export default function SelectArea() {

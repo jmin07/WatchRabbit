@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import { CenterDiv } from "../style/styled";
 import {
   Grid,

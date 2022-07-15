@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Paper,
   IconButton,
@@ -11,28 +11,29 @@ import {
 // import SearchIcon from "@mui/icons-material/Search";
 
 import { CenterDiv, Img } from "../style/styled";
-import React, { useState } from "react";
 import Modal from "react-modal";
 import "../style/modal.css";
 import "../style/main.css";
-// import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-// import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import "../style/font.css";
 import HomeIcon from "@mui/icons-material/Home";
-
+//
+import { TitleContext } from "../contexts/TitleContext";
+import React, { useContext, useState } from "react";
+//
 Modal.setAppElement("Title");
 
 export default function Title() {
-  // const [modalOpen, setModalOpen] = useState(false);
-  // const [search, setsearch] = useState(false);
+  //
+  const { setTitleOn } = useContext(TitleContext);
+  //
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
-    const value = e.target[0].value
+    const value = e.target[0].value;
     if (e.target[0].value !== "") {
-      navigate("/home", { state: value });
+      navigate("/", { state: value });
     }
     e.preventDefault();
   };
@@ -57,17 +58,7 @@ export default function Title() {
           container
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
-          {/* <Grid item sx={{ margin: 3 }}></Grid> */}
-          <Grid item sx={{ margin: 3 }}>
-            {/* <Tooltip title="Login" arrow TransitionComponent={Zoom}>
-              <IconButton onClick={() => setModalOpen(true)}>
-                <AccountCircleIcon
-                  fontSize="large"
-                  sx={{ color: "dimgray" }}
-                />
-              </IconButton>
-            </Tooltip> */}
-          </Grid>
+          <Grid item sx={{ margin: 3 }}></Grid>
         </Grid>
         <Grid container sx={{ mt: 25 }}>
           <Grid item xs={12}>
@@ -105,71 +96,16 @@ export default function Title() {
                 {/* <SearchIcon /> */}
               </IconButton>
             </Paper>
-
-            {/* <TextField
-              color="success"
-              sx={{ mt: 1, mb: 2, background: "white" }}
-              label="검색할 물품을 입력하세요"
-              name=""
-              autoComplete=""
-              id=""
-            >
-              <SearchIcon />
-            </TextField> */}
           </Grid>
 
           <Grid item xs={12} sx={{ m: 3 }}>
-            <Link to="home">
-              <Tooltip title="Main Page" arrow TransitionComponent={Zoom}>
-                <IconButton>
-                  <HomeIcon fontSize="large" />
-                </IconButton>
-              </Tooltip>
-            </Link>
+            <Tooltip title="Main Page" arrow TransitionComponent={Zoom}>
+              <IconButton onClick={()=>setTitleOn(false)}>
+                <HomeIcon fontSize="large" />
+              </IconButton>
+            </Tooltip>
           </Grid>
         </Grid>
-
-        {/* 로그인 모달*/}
-        {/* <Modal
-          style={{
-            overlay: {
-              background: "rgba(0, 0, 0, 0.7)",
-            },
-            content: {
-              position: "absolute",
-              top: "12%",
-              left: "36.7%",
-              background: "white",
-              border: "none",
-              width: "23rem",
-              height: "33rem",
-              boxShadow: "0px 0px 5px 1px dimgray",
-            },
-          }}
-          closeTimeoutMS={300}
-          isOpen={modalOpen}
-          onRequestClose={() => setModalOpen(false)}
-        >
-          <IconButton
-            sx={{ position: "absolute", top: "2%", left: "88%" }}
-            onClick={() => setModalOpen(false)}
-          >
-            <CloseIcon color="warning" />
-          </IconButton>
-          <Login />
-          <Grid container>
-            <Grid item xs sx={{ ml: 3 }}>
-              <Link to="forgotpw" style={{ color: "dodgerblue" }}>
-                비밀번호 찾기
-              </Link>
-            </Grid>
-            <Grid item sx={{ mr: 3 }}>
-              <Link to="signup" style={{ color: "dodgerblue" }}>
-                회원가입
-              </Link>
-            </Grid>
-          </Grid>
-        </Modal> */}
       </CenterDiv>
 
       <Box

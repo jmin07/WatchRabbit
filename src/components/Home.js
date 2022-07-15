@@ -1,5 +1,5 @@
 import { Box, Container } from "@mui/material";
-import Carousel from "../components/Carousel";
+import Carousel from "./Carousel";
 
 export default function Home() {
   return (

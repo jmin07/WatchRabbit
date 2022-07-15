@@ -1,30 +1,36 @@
 import { Routes, Route } from "react-router-dom";
-import Title from "./routes/Title";
-import SignUp from "./routes/SignUp";
 import "./style/main.css";
-import Trace from "./routes/Trace";
-import Home from "./routes/Home";
-import EasyData from "./routes/EasyData";
+// import Trace from "./routes/Trace";
+// import Home from "./routes/Home";
+// import Header from "./components/Header";
+// import EasyData from "./routes/EasyData";
+import SignUp from "./routes/SignUp";
 import ForgotPW from "./routes/ForgotPW";
-import Header from "./components/Header";
-import { useLocation } from "react-router-dom";
+import Mainpage from "./routes/Mainpage";
+import Datapage from "./routes/Datapage";
+import Tracepage from "./routes/Tracepage";
+import Title from "./components/Title";
+
+import { useState } from "react";
+import { TitleContext } from "./contexts/TitleContext";
 
 function App() {
-  const location = useLocation();
-
-
+  const [titleOn, setTitleOn] = useState(true);
+  console.log(titleOn);
   return (
-    <div>
-      <Header />
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Title />} />
-          <Route path="home" element={<Home />} />
-          <Route path="trace" element={<Trace />} />
-          <Route path="data" element={<EasyData />} />
+    <TitleContext.Provider value={{ titleOn, setTitleOn }}>
+      {titleOn ? (
+        <Title />
+      ) : (
+        <Routes>
+          <Route path="/" element={<Mainpage />} />
+          <Route path="trace" element={<Tracepage />} />
+          <Route path="data" element={<Datapage />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="forgotpw" element={<ForgotPW />} />
         </Routes>
-    </div>
+      )}
+    </TitleContext.Provider>
   );
 }
 

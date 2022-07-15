@@ -1,21 +1,7 @@
-import { Link } from "react-router-dom";
-import { TitleText, CenterDiv, Input, Img } from "../style/styled";
-import {
-  Paper,
-  IconButton,
-  InputBase,
-  Box,
-  Grid,
-  Typography,
-  TextField,
-  Button,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  Divider,
-} from "@mui/material";
+import { CenterDiv } from "../style/styled";
+import { Typography, TextField, Button, Divider } from "@mui/material";
 
-export default function SignUp() {
+export default function ForgotPW() {
   return (
     <>
       <CenterDiv

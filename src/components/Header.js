@@ -19,13 +19,17 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 
 // 로그인 모달 import
 import Modal from "react-modal";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Login from "./Login";
 import CloseIcon from "@mui/icons-material/Close";
 
 import "../style/font.css";
+import { TitleContext } from "../contexts/TitleContext";
 
 export default function Header() {
+  //
+  const { setTitleOn } = useContext(TitleContext);
+  //
   const [modalOpen, setModalOpen] = useState(false);
   const [loginDone, setLoginDone] = useState();
 
@@ -54,23 +58,24 @@ export default function Header() {
           >
             <Grid container>
               <Grid item xs={3}>
-                <Link to="/" style={{ textDecorationLine: "none" }}>
-                  <Button
-                    size="small"
-                    color="warning"
-                    sx={{
-                      typography: "Watch Rabbit",
-                      fontSize: 30,
-                      letterSpacing: 3,
-                      color: "coral",
-                      fontFamily: "ulsanjunggu",
-                      borderRadius: "1rem",
-                    }}
-                  >
-                    Watch <span style={{ color: "#357a38" }}>Rabbit</span>
-                    <Img src="/img/carrot.png" width="35px" />
-                  </Button>
-                </Link>
+                {/* <Link to="/" style={{ textDecorationLine: "none" }}> */}
+                <Button
+                  size="small"
+                  color="warning"
+                  sx={{
+                    typography: "Watch Rabbit",
+                    fontSize: 30,
+                    letterSpacing: 3,
+                    color: "coral",
+                    fontFamily: "ulsanjunggu",
+                    borderRadius: "1rem",
+                  }}
+                  onClick={()=>setTitleOn(true)}
+                >
+                  Watch <span style={{ color: "#357a38" }}>Rabbit</span>
+                  <Img src="/img/carrot.png" width="35px" />
+                </Button>
+                {/* </Link> */}
               </Grid>
               <Grid item xs={6}>
                 <Paper
@@ -151,12 +156,12 @@ export default function Header() {
             <Login getLogin={getLogin} />
             <Grid container>
               <Grid item xs sx={{ ml: 3 }}>
-                <Link to="/main/forgotpw" style={{ color: "dodgerblue" }}>
+                <Link to="/forgotpw" style={{ color: "dodgerblue" }}>
                   비밀번호 찾기
                 </Link>
               </Grid>
               <Grid item sx={{ mr: 3 }}>
-                <Link to="/main/signup" style={{ color: "dodgerblue" }}>
+                <Link to="/signup" style={{ color: "dodgerblue" }}>
                   회원가입
                 </Link>
               </Grid>
@@ -164,7 +169,7 @@ export default function Header() {
           </Modal>
 
           <Box>
-            <Link to="/main/home" style={{ textDecorationLine: "none" }}>
+            <Link to="/" style={{ textDecorationLine: "none" }}>
               <Button
                 sx={{
                   ml: 6,
@@ -179,7 +184,7 @@ export default function Header() {
               </Button>
             </Link>
 
-            <Link to="/main/data" style={{ textDecorationLine: "none" }}>
+            <Link to="/data" style={{ textDecorationLine: "none" }}>
               <Button
                 sx={{
                   ml: 2,
@@ -194,7 +199,7 @@ export default function Header() {
               </Button>
             </Link>
 
-            <Link to="/main/trace" style={{ textDecorationLine: "none" }}>
+            <Link to="/trace" style={{ textDecorationLine: "none" }}>
               <Button
                 sx={{
                   ml: 2,
