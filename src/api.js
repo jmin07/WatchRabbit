@@ -26,7 +26,7 @@ export async function postEmail(Data) {
       "Content-Type": "application/json; charset=utf-8",
     },
     body: JSON.stringify({
-      email : Data.userEmail,
+      email: Data.userEmail,
     }),
   });
   const body = await response.json();
@@ -56,4 +56,20 @@ export async function postKakao(Data) {
   const body = await response.json();
   return body;
 }
-
+export async function postSearchData(Data) {
+  const response = await fetch(`${BASE_URL}${Data.path}`, {
+    method: "GET",
+    mode: "cors",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify({
+      city: Data.userCity,
+      area: Data.userArea,
+      value: Data.userValue,
+    }),
+  });
+  const body = await response.json();
+  return body;
+}

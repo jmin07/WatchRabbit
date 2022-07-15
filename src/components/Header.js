@@ -26,9 +26,13 @@ import CloseIcon from "@mui/icons-material/Close";
 import "../style/font.css";
 import { TitleContext } from "../contexts/TitleContext";
 import { LoginDataContext } from "../contexts/LoginDataContext";
+import { SearchDataContext } from "../contexts/SearchDataContext";
+import { postSearchData } from "../api";
 
 export default function Header() {
   //
+  const { setSearchData } = useContext(SearchDataContext);
+
   const { setTitleOn } = useContext(TitleContext);
   const [login, setLogin] = useState(false);
   //
@@ -36,7 +40,18 @@ export default function Header() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    const city = e.target[0].value;
+    const area = e.target[1].value;
+    const value = e.target[2].value;
+    console.log(city, area, value);
+    const data = "/auth";
+    const props = {
+      path: data,
+      userCity: city,
+      userArea: area,
+      userValue: value,
+    };
+    postSearchData(props);
   };
 
   return (

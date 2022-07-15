@@ -13,8 +13,8 @@ export default function SelectArea() {
   const countries = useMemo(() => Object.keys(data), []);
   const cities = useMemo(() => data[currentCountry], [currentCountry]);
 
-  console.log(currentCountry);
-  console.log(currentCity);
+  // console.log(currentCountry);
+  // console.log(currentCity);
   // function pushValue(countriesArray, selectTag) {
   //   //data를 순회한 후 data를 담은 option을 select에 추가
   //   countriesArray.forEach((element) => {
