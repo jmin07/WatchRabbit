@@ -25,20 +25,18 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import "../style/font.css";
 import { TitleContext } from "../contexts/TitleContext";
+import { LoginDataContext } from "../contexts/LoginDataContext";
 
 export default function Header() {
   //
   const { setTitleOn } = useContext(TitleContext);
+  const [login, setLogin] = useState(false);
   //
   const [modalOpen, setModalOpen] = useState(false);
-  const [loginDone, setLoginDone] = useState();
-
-  function getLogin(loginResult) {
-    setLoginDone(loginResult);
-  }
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log(e);
   };
 
   return (
@@ -58,7 +56,6 @@ export default function Header() {
           >
             <Grid container>
               <Grid item xs={3}>
-                {/* <Link to="/" style={{ textDecorationLine: "none" }}> */}
                 <Button
                   size="small"
                   color="warning"
@@ -70,12 +67,11 @@ export default function Header() {
                     fontFamily: "ulsanjunggu",
                     borderRadius: "1rem",
                   }}
-                  onClick={()=>setTitleOn(true)}
+                  onClick={() => setTitleOn(true)}
                 >
                   Watch <span style={{ color: "#357a38" }}>Rabbit</span>
                   <Img src="/img/carrot.png" width="35px" />
                 </Button>
-                {/* </Link> */}
               </Grid>
               <Grid item xs={6}>
                 <Paper
@@ -115,9 +111,9 @@ export default function Header() {
                   onClick={() => setModalOpen(true)}
                 >
                   <Avatar>
-                    {loginDone.isSuccess ? (
+                    {login ? (
                       <Tooltip title="로그아웃">
-                        <Img src={loginDone.profile_image} width="50px" />
+                        <Img src="/img/carrot.png" width="50px" />
                       </Tooltip>
                     ) : null}
                   </Avatar>
@@ -153,7 +149,10 @@ export default function Header() {
             >
               <CloseIcon color="warning" />
             </IconButton>
-            <Login getLogin={getLogin} />
+            <LoginDataContext.Provider value={{ login, setLogin }}>
+              <Login />
+            </LoginDataContext.Provider>
+
             <Grid container>
               <Grid item xs sx={{ ml: 3 }}>
                 <Link to="/forgotpw" style={{ color: "dodgerblue" }}>

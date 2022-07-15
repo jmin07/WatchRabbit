@@ -4,7 +4,8 @@ import { styled } from "@mui/material/styles";
 
 import { postGoogle, postLoginData, postKakao } from "../api";
 import { Img } from "../style/styled";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { LoginDataContext } from "../contexts/LoginDataContext";
 
 const GoogleButton = styled(Button)({
   backgroundColor: "white",
@@ -21,8 +22,8 @@ const KakaoButton = styled(Button)({
   },
 });
 
-export default function Login({ getLogin }) {
-  const [loginResult, setLoginResult] = useState();
+export default function Login() {
+  const { setLogin } = useContext(LoginDataContext);
 
   const navigate = useNavigate();
 
@@ -49,28 +50,24 @@ export default function Login({ getLogin }) {
     const props = { path: data };
     const response = postGoogle(props);
     response.then((res) => {
+      console.log(res);
       console.log("구글로 이동");
-    });
-    response.then((res) => {
       const isSuccess = res.isSuccess;
       const profile_image = res.result.profile_image;
-      setLoginResult({ isSuccess, profile_image });
+      setLogin(isSuccess);
     });
-    getLogin(loginResult); //loginResult
   };
   const kakaoClick = () => {
     const data = "/auth/kakao";
     const props = { path: data };
     const response = postKakao(props);
     response.then((res) => {
+      console.log(res);
       console.log("카카오로 이동");
-    });
-    response.then((res) => {
       const isSuccess = res.isSuccess;
       const profile_image = res.result.profile_image;
-      setLoginResult({ isSuccess, profile_image });
+      setLogin(isSuccess);
     });
-    getLogin(loginResult); //loginResult
   };
   return (
     <>

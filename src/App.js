@@ -16,19 +16,18 @@ import { TitleContext } from "./contexts/TitleContext";
 
 function App() {
   const [titleOn, setTitleOn] = useState(true);
-  console.log(titleOn);
   return (
     <TitleContext.Provider value={{ titleOn, setTitleOn }}>
       {titleOn ? (
         <Title />
       ) : (
-        <Routes>
-          <Route path="/" element={<Mainpage />} />
-          <Route path="trace" element={<Tracepage />} />
-          <Route path="data" element={<Datapage />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="forgotpw" element={<ForgotPW />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Mainpage />} />
+            <Route path="trace" element={<Tracepage />} />
+            <Route path="data" element={<Datapage />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="forgotpw" element={<ForgotPW />} />
+          </Routes>
       )}
     </TitleContext.Provider>
   );
