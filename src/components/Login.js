@@ -117,6 +117,7 @@ export default function Login() {
             />
 
             <Button
+              type="submit"
               color="warning"
               fullWidth
               variant="contained"

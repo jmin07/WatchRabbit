@@ -44,13 +44,14 @@ export default function Header() {
     const area = e.target[1].value;
     const value = e.target[2].value;
     console.log(city, area, value);
-    const data = "/auth";
+    const data = "/db/test";
     const props = {
       path: data,
       userCity: city,
       userArea: area,
       userValue: value,
     };
+    console.log(props);
     postSearchData(props);
   };
 

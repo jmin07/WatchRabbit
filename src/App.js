@@ -11,7 +11,7 @@ import Datapage from "./routes/Datapage";
 import Tracepage from "./routes/Tracepage";
 import Title from "./components/Title";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TitleContext } from "./contexts/TitleContext";
 import { SearchDataContext } from "./contexts/SearchDataContext";
 
