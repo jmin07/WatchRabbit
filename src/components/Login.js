@@ -37,6 +37,8 @@ export default function Login() {
     console.log(id, password);
     const response = postLoginData(props);
     response.then((res) => {
+      const isSuccess = res.isSuccess;
+      setLogin(isSuccess);
       if (res.isSuccess) {
         alert(`${res.message}`);
         navigate("/");

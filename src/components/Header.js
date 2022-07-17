@@ -31,7 +31,7 @@ import { postSearchData } from "../api";
 
 export default function Header() {
   //
-  const { searchData, setSearchData } = useContext(SearchDataContext);
+  const { setSearchData } = useContext(SearchDataContext);
   const navigate = useNavigate();
 
   const { setTitleOn } = useContext(TitleContext);

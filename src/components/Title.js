@@ -22,21 +22,44 @@ import HomeIcon from "@mui/icons-material/Home";
 import { TitleContext } from "../contexts/TitleContext";
 import React, { useContext, useState } from "react";
 import SelectArea from "./SelectArea";
+import { SearchDataContext } from "../contexts/SearchDataContext";
+import { postSearchData } from "../api";
 //
 Modal.setAppElement("Title");
 
 export default function Title() {
   //
   const { setTitleOn } = useContext(TitleContext);
+  const { setSearchData } = useContext(SearchDataContext);
+
   //
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
-    const value = e.target[0].value;
-    if (e.target[0].value !== "") {
-      navigate("/", { state: value });
-    }
+    // if (e.target[0].value !== "") {
+    //   navigate("/", { state: value });
+    // }
     e.preventDefault();
+    const city = e.target[0].value;
+    const area = e.target[1].value;
+    const value = e.target[2].value;
+    console.log(city, area, value);
+    const data = "/db/test";
+    const props = {
+      path: data,
+      userCity: city,
+      userArea: area,
+      userValue: value,
+    };
+    setTitleOn(false);
+    navigate("/data");
+    setSearchData((searchData) => ({
+      ...props,
+    }));
+    const response = postSearchData(props);
+    response.then((res) => {
+      // setSearchData(res);
+    });
   };
 
   const [sideBar, setSideBar] = useState(false);
