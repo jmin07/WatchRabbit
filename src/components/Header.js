@@ -31,11 +31,11 @@ import { postSearchData } from "../api";
 
 export default function Header() {
   //
-  const { setSearchData } = useContext(SearchDataContext);
+  const { searchData, setSearchData } = useContext(SearchDataContext);
   const navigate = useNavigate();
 
   const { setTitleOn } = useContext(TitleContext);
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState({TrueFalse : false, profileImage : "/img/carrot.png/"});
   //
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -135,9 +135,9 @@ export default function Header() {
                   onClick={() => setModalOpen(true)}
                 >
                   <Avatar>
-                    {login ? (
+                    {login.TrueFalse ? (
                       <Tooltip title="로그아웃">
-                        <Img src="/img/carrot.png" width="50px" />
+                        <Img src={login.profileImage} width="50px" />
                       </Tooltip>
                     ) : null}
                   </Avatar>

@@ -38,7 +38,10 @@ export default function Login() {
     const response = postLoginData(props);
     response.then((res) => {
       const isSuccess = res.isSuccess;
-      setLogin(isSuccess);
+      const props = { TrueFalse: isSuccess };
+      setLogin((login) => ({
+        ...props,
+      }));
       if (res.isSuccess) {
         alert(`${res.message}`);
         navigate("/");
@@ -56,7 +59,10 @@ export default function Login() {
       console.log("구글로 이동");
       const isSuccess = res.isSuccess;
       const profile_image = res.result.profile_image;
-      setLogin(isSuccess);
+      const props = { TrueFalse: isSuccess, profileImage: profile_image };
+      setLogin((login) => ({
+        ...props,
+      }));
     });
   };
   const kakaoClick = () => {
@@ -68,7 +74,10 @@ export default function Login() {
       console.log("카카오로 이동");
       const isSuccess = res.isSuccess;
       const profile_image = res.result.profile_image;
-      setLogin(isSuccess);
+      const props = { TrueFalse: isSuccess, profileImage: profile_image };
+      setLogin((login) => ({
+        ...props,
+      }));
     });
   };
   return (
