@@ -18,7 +18,7 @@ const settings = {
 
 const StyledSlider = styled(Slider)`
   .slick-list {
-    height: 28rem;
+    height: 42rem;
     margin: 0 auto;
   }
 

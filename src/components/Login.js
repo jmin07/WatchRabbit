@@ -39,7 +39,7 @@ export default function Login() {
     response.then((res) => {
       if (res.isSuccess) {
         alert(`${res.message}`);
-        navigate("/home");
+        navigate("/");
       } else {
         alert(`${res.message}`);
       }

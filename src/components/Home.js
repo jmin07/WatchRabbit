@@ -4,16 +4,16 @@ import Carousel from "./Carousel";
 export default function Home() {
   return (
     <>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Box
           sx={{
             m: 5,
             mt: 2,
-            background: "#F9F2EA",
+            background: "#fff6e5",
             borderRadius: "5px",
             p: 5,
             boxShadow: "0px 0px 5px 1px #C0A786",
-            height: "30rem",
+            height: "42rem",
           }}
         >
           <Carousel />

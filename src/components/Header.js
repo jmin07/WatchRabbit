@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Img } from "../style/styled";
 import { Outlet } from "react-router-dom";
 import SelectArea from "../components/SelectArea";
@@ -31,7 +31,8 @@ import { postSearchData } from "../api";
 
 export default function Header() {
   //
-  const { setSearchData } = useContext(SearchDataContext);
+  const { searchData, setSearchData } = useContext(SearchDataContext);
+  const navigate = useNavigate();
 
   const { setTitleOn } = useContext(TitleContext);
   const [login, setLogin] = useState(false);
@@ -51,20 +52,27 @@ export default function Header() {
       userArea: area,
       userValue: value,
     };
-    console.log(props);
-    postSearchData(props);
+    navigate("/data");
+    setSearchData(searchData => ({
+      ...props,
+    }));
+    const response = postSearchData(props);
+    response.then((res) => {
+      // setSearchData(res);
+    });
   };
 
   return (
     <>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Grid>
           <Box
             sx={{
               m: 5,
               mt: 2,
               mb: 2,
-              background: "#F9F2EA",
+              // background: "#F9F2EA",
+              background: "#fff6e5",
               borderRadius: "5px",
               boxShadow: "0px 0px 5px 1px #C0A786",
               p: 2,
@@ -77,7 +85,7 @@ export default function Header() {
                   color="warning"
                   sx={{
                     typography: "Watch Rabbit",
-                    fontSize: 30,
+                    fontSize: "2rem",
                     letterSpacing: 3,
                     color: "coral",
                     fontFamily: "ulsanjunggu",
@@ -190,7 +198,7 @@ export default function Header() {
                   ml: 6,
                   fontWeight: "bold",
                   color: "white",
-                  background: "#B6AB9D",
+                  background: "#8dab66",
                 }}
                 variant="contained"
                 color="warning"
@@ -205,7 +213,7 @@ export default function Header() {
                   ml: 2,
                   fontWeight: "bold",
                   color: "white",
-                  background: "#B6AB9D",
+                  background: "#8dab66",
                 }}
                 variant="contained"
                 color="warning"
@@ -220,7 +228,7 @@ export default function Header() {
                   ml: 2,
                   fontWeight: "bold",
                   color: "white",
-                  background: "#B6AB9D",
+                  background: "#8dab66",
                 }}
                 variant="contained"
                 color="warning"

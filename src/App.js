@@ -17,7 +17,7 @@ import { SearchDataContext } from "./contexts/SearchDataContext";
 
 function App() {
   const [titleOn, setTitleOn] = useState(true);
-  const [searchData, setSearchData] = useState(true);
+  const [searchData, setSearchData] = useState({});
 
   return (
     <TitleContext.Provider value={{ titleOn, setTitleOn }}>

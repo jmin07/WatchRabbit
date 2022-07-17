@@ -53,7 +53,8 @@ export default function Title() {
         height="90%"
         boxShadow="0px 0px 5px 1px #C0A786"
         borderRadius="7px"
-        backgroundColor="#F9F2EA"
+        // backgroundColor="#F9F2EA"
+        backgroundColor="#fff6e5"
       >
         <Grid
           container
