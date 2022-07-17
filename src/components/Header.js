@@ -27,7 +27,7 @@ import "../style/font.css";
 import { TitleContext } from "../contexts/TitleContext";
 import { LoginDataContext } from "../contexts/LoginDataContext";
 import { SearchDataContext } from "../contexts/SearchDataContext";
-import { postSearchData } from "../api";
+import { getLogOut, postSearchData } from "../api";
 
 export default function Header() {
   //
@@ -35,7 +35,10 @@ export default function Header() {
   const navigate = useNavigate();
 
   const { setTitleOn } = useContext(TitleContext);
-  const [login, setLogin] = useState({TrueFalse : false, profileImage : "/img/carrot.png/"});
+  const [login, setLogin] = useState({
+    TrueFalse: false,
+    profileImage: "img/carrot.png",
+  });
   //
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -53,13 +56,18 @@ export default function Header() {
       userValue: value,
     };
     navigate("/data");
-    setSearchData(searchData => ({
+    setSearchData((searchData) => ({
       ...props,
     }));
     const response = postSearchData(props);
     response.then((res) => {
       // setSearchData(res);
     });
+  };
+  const LogOut = () => {
+    const data = "/auth/logout";
+    const props = { path: data };
+    getLogOut(props);
   };
 
   return (
@@ -129,7 +137,26 @@ export default function Header() {
               </Grid>
               <Grid item xs={1}>
                 {/* 로그인 모달 버튼 */}
-                <Button
+                {login.TrueFalse ? (
+                  <Tooltip title="로그아웃">
+                    <Button color="warning" sx={{ m: 1 }} onClick={LogOut}>
+                      <Avatar>
+                        <Img src={login.profileImage} width="50px" />
+                      </Avatar>
+                    </Button>
+                  </Tooltip>
+                ) : (
+                  <Tooltip title="로그인">
+                    <Button
+                      color="warning"
+                      sx={{ m: 1 }}
+                      onClick={() => setModalOpen(true)}
+                    >
+                      <Avatar></Avatar>
+                    </Button>
+                  </Tooltip>
+                )}
+                {/* <Button
                   color="warning"
                   sx={{ m: 1 }}
                   onClick={() => setModalOpen(true)}
@@ -141,7 +168,7 @@ export default function Header() {
                       </Tooltip>
                     ) : null}
                   </Avatar>
-                </Button>
+                </Button> */}
               </Grid>
             </Grid>
           </Box>

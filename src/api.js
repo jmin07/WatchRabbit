@@ -73,3 +73,15 @@ export async function postSearchData(Data) {
   const body = await response.json();
   return body;
 }
+export async function getLogOut(Data) {
+  const response = await fetch(`${BASE_URL}${Data.path}`, {
+    method: "GET",
+    mode: "cors",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+  });
+  const body = await response.json();
+  return body;
+}
