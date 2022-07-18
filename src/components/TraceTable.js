@@ -6,10 +6,35 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import AddTable from "./AddTable";
+import { Button } from "@mui/material";
+import { useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 export default function TraceTable() {
+  // const [table, setTable] = useState([0]);
+
+  // const AddTadbleBody = () => {
+  //   if (table.length !== 6) {
+  //     setTable((prevList) => [...prevList, 0]);
+
+  //     console.log(table);
+  //   }
+  // };
+
+  // const DeleteTableBody = (idx) => {
+  //   setTable(table.filter((item) => table.length-1 !== idx));
+  //   console.log(table.length -1);
+  //   console.log(idx);
+
+
+  // };
   return (
-    <TableContainer component={Paper} variant="outlined" sx={{background:""}}>
+    <TableContainer
+      component={Paper}
+      variant="outlined"
+      sx={{ background: "" }}
+    >
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -48,7 +73,27 @@ export default function TraceTable() {
         </TableHead>
         <AddTable />
         <AddTable />
+        <AddTable />
+        <AddTable />
+        <AddTable />
+        {/* {table.map((item, idx) => (
+          <>
+            <AddTable key={idx} />
+            <Button
+              sx={{ position: "relative", left: "45%" }}
+              onClick={() => DeleteTableBody(idx, item)}
+            >
+              <RemoveIcon />
+            </Button>
+          </>
+        ))} */}
       </Table>
+      {/* <Button
+        sx={{ position: "relative", left: "45%" }}
+        onClick={AddTadbleBody}
+      >
+        <AddIcon />
+      </Button> */}
     </TableContainer>
   );
 }
