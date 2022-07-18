@@ -249,6 +249,36 @@ export default function Header() {
               </Button>
             </Link>
 
+            <Link to="/search" style={{ textDecorationLine: "none" }}>
+              <Button
+                sx={{
+                  ml: 2,
+                  fontWeight: "bold",
+                  color: "white",
+                  background: "#8dab66",
+                }}
+                variant="contained"
+                color="warning"
+              >
+                물품 검색
+              </Button>
+            </Link>
+
+            <Link to="/statistics" style={{ textDecorationLine: "none" }}>
+              <Button
+                sx={{
+                  ml: 2,
+                  fontWeight: "bold",
+                  color: "white",
+                  background: "#8dab66",
+                }}
+                variant="contained"
+                color="warning"
+              >
+                통계 정보
+              </Button>
+            </Link>
+
             <Link to="/trace" style={{ textDecorationLine: "none" }}>
               <Button
                 sx={{

@@ -9,6 +9,9 @@ import ForgotPW from "./routes/ForgotPW";
 import Mainpage from "./routes/Mainpage";
 import Datapage from "./routes/Datapage";
 import Tracepage from "./routes/Tracepage";
+import Searchpage from "./routes/Searchpage";
+import Statisticspage from "./routes/Statisticspage";
+
 import Title from "./components/Title";
 
 import { useState } from "react";
@@ -17,7 +20,7 @@ import { SearchDataContext } from "./contexts/SearchDataContext";
 
 function App() {
   const [titleOn, setTitleOn] = useState(true);
-  const [searchData, setSearchData] = useState({userCity : "토끼"});
+  const [searchData, setSearchData] = useState({ userCity: "토끼" });
 
   return (
     <TitleContext.Provider value={{ titleOn, setTitleOn }}>
@@ -29,6 +32,8 @@ function App() {
             <Route path="/" element={<Mainpage />} />
             <Route path="trace" element={<Tracepage />} />
             <Route path="data" element={<Datapage />} />
+            <Route path="search" element={<Searchpage />} />
+            <Route path="statistics" element={<Statisticspage />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="forgotpw" element={<ForgotPW />} />
           </Routes>
