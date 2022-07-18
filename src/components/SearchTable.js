@@ -8,7 +8,6 @@ import Paper from "@mui/material/Paper";
 import AddSearchTable from "./AddSearchTable";
 
 export default function SearchTable() {
-  
   return (
     <>
       <TableContainer
@@ -21,32 +20,29 @@ export default function SearchTable() {
             <TableRow>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
+                sx={{ borderRight: "dotted 1px lightgray", width: "9rem" }}
               >
                 데이터 검색일
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
+                sx={{ borderRight: "dotted 1px lightgray", width: "9rem" }}
               >
                 전국 평균가격
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
+                sx={{ borderRight: "dotted 1px lightgray", width: "9rem" }}
               >
                 전국 최저가격
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
+                sx={{ borderRight: "dotted 1px lightgray", width: "9rem" }}
               >
                 전국 최고가격
               </TableCell>
-              <TableCell
-                align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
-              >
+              <TableCell align="center" sx={{ width: "9rem" }}>
                 전체 게시글 수
               </TableCell>
             </TableRow>
@@ -55,31 +51,30 @@ export default function SearchTable() {
             <TableRow>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray" }}
+                sx={{ borderRight: "dotted 1px lightgray" }}
               >
                 2022/7/18
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray" }}
+                sx={{ borderRight: "dotted 1px lightgray" }}
               >
                 330.000원
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray" }}
+                sx={{ borderRight: "dotted 1px lightgray" }}
               >
                 56.000원
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray" }}
+                sx={{ borderRight: "dotted 1px lightgray" }}
               >
                 4.500.000원
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray" }}
               >
                 356.844개
               </TableCell>
@@ -98,52 +93,40 @@ export default function SearchTable() {
             <TableRow>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
+                sx={{ borderRight: "dotted 1px lightgray", width: "9rem" }}
               >
                 지역 / 동네
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
+                sx={{ borderRight: "dotted 1px lightgray", width: "9rem" }}
               >
                 판매자/매너온도{/*할 것 매너온도 색변경 */}
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
+                sx={{ borderRight: "dotted 1px lightgray" }}
               >
                 글 제목
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
+                sx={{ borderRight: "dotted 1px lightgray", width: "9rem" }}
               >
                 분류
               </TableCell>
               <TableCell
                 align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
+                sx={{ borderRight: "dotted 1px lightgray", width: "9rem" }}
               >
                 물품 가격
               </TableCell>
 
-              <TableCell
-                align="center"
-                sx={{ borderRight: "dotted 2px lightgray", width: "9rem" }}
-              >
+              <TableCell align="center" sx={{ width: "9rem" }}>
                 게시글 보기
               </TableCell>
             </TableRow>
           </TableHead>
-          <AddSearchTable />
-          <AddSearchTable />
-          <AddSearchTable />
-          <AddSearchTable />
-          <AddSearchTable />
-          <AddSearchTable />
-          <AddSearchTable />
-          <AddSearchTable />
-          <AddSearchTable />
           <AddSearchTable />
         </Table>
       </TableContainer>

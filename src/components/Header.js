@@ -13,6 +13,7 @@ import {
   Container,
   Tooltip,
   Avatar,
+  Divider,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -27,11 +28,13 @@ import "../style/font.css";
 import { TitleContext } from "../contexts/TitleContext";
 import { LoginDataContext } from "../contexts/LoginDataContext";
 import { SearchDataContext } from "../contexts/SearchDataContext";
+import { DBdataContext } from "../contexts/DBdataContext";
 import { getLogOut, postSearchData } from "../api";
 
 export default function Header() {
   //
   const { searchData, setSearchData } = useContext(SearchDataContext);
+  const { setDBdata } = useContext(DBdataContext);
   const navigate = useNavigate();
 
   const { setTitleOn } = useContext(TitleContext);
@@ -62,8 +65,8 @@ export default function Header() {
     const response = postSearchData(props);
     response.then((res) => {
       console.log("res: ", res);
-      console.log("res.result: ", res.result);
       // const item = res.result;
+      setDBdata(res);
     });
   };
   const LogOut = () => {
@@ -78,9 +81,11 @@ export default function Header() {
         <Grid>
           <Box
             sx={{
-              m: 5,
-              mt: 2,
+              // m: 5,
+              // mt: 2,
               mb: 2,
+              ml: 5,
+              mr: 5,
               // background: "#F9F2EA",
               background: "#f5f5f5", //"#fff6e5"
               borderRadius: "5px",
@@ -136,7 +141,7 @@ export default function Header() {
                     sx={{ color: "coral", m: 2, verticalAlign: "middle" }}
                   /> */}
                   검색 된 단어: <p />
-                  서울 강남구 노트북
+                  {searchData.userCity} {searchData.userArea} {searchData.userValue}
                 </Box>
               </Grid>
               <Grid item xs={1}>
@@ -173,6 +178,90 @@ export default function Header() {
                     ) : null}
                   </Avatar>
                 </Button> */}
+              </Grid>
+              <Grid item xs={12}>
+                <Box>
+                  <Divider sx={{ color: "gray", mb: 2 }}>menu</Divider>
+
+                  <Box>
+                    <Link to="/" style={{ textDecorationLine: "none" }}>
+                      <Button
+                        sx={{
+                          fontWeight: "bold",
+                          color: "white",
+                          background: "coral",
+                        }}
+                        variant="contained"
+                        color="warning"
+                      >
+                        사이트 안내
+                      </Button>
+                    </Link>
+
+                    <Link to="/data" style={{ textDecorationLine: "none" }}>
+                      <Button
+                        sx={{
+                          ml: 2,
+                          fontWeight: "bold",
+                          color: "white",
+                          background: "coral",
+                        }}
+                        variant="contained"
+                        color="warning"
+                      >
+                        간편 데이터
+                      </Button>
+                    </Link>
+
+                    <Link to="/search" style={{ textDecorationLine: "none" }}>
+                      <Button
+                        sx={{
+                          ml: 2,
+                          fontWeight: "bold",
+                          color: "white",
+                          background: "coral",
+                        }}
+                        variant="contained"
+                        color="warning"
+                      >
+                        물품 검색
+                      </Button>
+                    </Link>
+
+                    <Link
+                      to="/statistics"
+                      style={{ textDecorationLine: "none" }}
+                    >
+                      <Button
+                        sx={{
+                          ml: 2,
+                          fontWeight: "bold",
+                          color: "white",
+                          background: "coral",
+                        }}
+                        variant="contained"
+                        color="warning"
+                      >
+                        통계 정보
+                      </Button>
+                    </Link>
+
+                    <Link to="/trace" style={{ textDecorationLine: "none" }}>
+                      <Button
+                        sx={{
+                          ml: 2,
+                          fontWeight: "bold",
+                          color: "white",
+                          background: "coral",
+                        }}
+                        variant="contained"
+                        color="warning"
+                      >
+                        추적 알림
+                      </Button>
+                    </Link>
+                  </Box>
+                </Box>
               </Grid>
             </Grid>
           </Box>
@@ -222,7 +311,7 @@ export default function Header() {
             </Grid>
           </Modal>
 
-          <Box>
+          {/* <Box>
             <Link to="/" style={{ textDecorationLine: "none" }}>
               <Button
                 sx={{
@@ -297,7 +386,7 @@ export default function Header() {
                 추적 알림
               </Button>
             </Link>
-          </Box>
+          </Box> */}
         </Grid>
       </Container>
       <Outlet />

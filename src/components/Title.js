@@ -73,7 +73,7 @@ export default function Title() {
       {/* 타이틀 화면 구현 */}
       <CenterDiv
         width="40%"
-        height="90%"
+        height="100vh"
         boxShadow="0px 0px 5px 1px #ccc"
         borderRadius="7px"
         // backgroundColor="#F9F2EA"

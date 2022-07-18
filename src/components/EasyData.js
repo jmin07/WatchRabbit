@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { DBdataContext } from "../contexts/DBdataContext";
 
 const data = [
   {
@@ -87,6 +88,8 @@ const LineDataChart = () => {
 
 export default function EasyData() {
   const { searchData } = useContext(SearchDataContext);
+  const { DBdata } = useContext(DBdataContext);
+
   console.log("객체", searchData);
 
   return (
@@ -175,11 +178,10 @@ export default function EasyData() {
                 color: "dimgray",
               }}
             >
-                            <h1>로그인한 아이디의 알림 설정</h1>
-                            <br/>
-                            <h2>현재 설정된 알림 대상은 알림설정글수 개입니다.</h2>
-                            <h2>다음 메일 알림은 메일전송예정시간 입니다.</h2>
-
+              <h1>로그인한 아이디의 알림 설정</h1>
+              <br />
+              <h2>현재 설정된 알림 대상은 알림설정글수 개입니다.</h2>
+              <h2>다음 메일 알림은 메일전송예정시간 입니다.</h2>
             </Box>
           </Grid>
         </Grid>

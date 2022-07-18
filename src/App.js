@@ -17,6 +17,7 @@ import Title from "./components/Title";
 import { useState } from "react";
 import { TitleContext } from "./contexts/TitleContext";
 import { SearchDataContext } from "./contexts/SearchDataContext";
+import { DBdataContext } from "./contexts/DBdataContext";
 
 function App() {
   const [titleOn, setTitleOn] = useState(true);
@@ -25,23 +26,37 @@ function App() {
     userArea: "지역",
     userValue: "물품",
   });
+  const [DBdata, setDBdata] = useState([
+    {
+      URL: "",
+      Title: "",
+      Price: "",
+      Classification: "",
+      Region: "",
+      Province: "",
+      Nickname: "",
+      Temperature: "",
+    },
+  ]);
 
   return (
     <TitleContext.Provider value={{ titleOn, setTitleOn }}>
       <SearchDataContext.Provider value={{ searchData, setSearchData }}>
-        {titleOn ? (
-          <Title />
-        ) : (
-          <Routes>
-            <Route path="/" element={<Mainpage />} />
-            <Route path="trace" element={<Tracepage />} />
-            <Route path="data" element={<Datapage />} />
-            <Route path="search" element={<Searchpage />} />
-            <Route path="statistics" element={<Statisticspage />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="forgotpw" element={<ForgotPW />} />
-          </Routes>
-        )}
+        <DBdataContext.Provider value={{ DBdata, setDBdata }}>
+          {titleOn ? (
+            <Title />
+          ) : (
+            <Routes>
+              <Route path="/" element={<Mainpage />} />
+              <Route path="trace" element={<Tracepage />} />
+              <Route path="data" element={<Datapage />} />
+              <Route path="search" element={<Searchpage />} />
+              <Route path="statistics" element={<Statisticspage />} />
+              <Route path="signup" element={<SignUp />} />
+              <Route path="forgotpw" element={<ForgotPW />} />
+            </Routes>
+          )}
+        </DBdataContext.Provider>
       </SearchDataContext.Provider>
     </TitleContext.Provider>
   );
