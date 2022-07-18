@@ -6,84 +6,25 @@ import TableRow from "@mui/material/TableRow";
 
 import { Paper, Button, InputBase } from "@mui/material";
 
-export default function AddTable({children}) {
-  const [currentCountry, setCurrentCountry] = useState("서울");
-  const [currentCity, setCurrentCity] = useState(data[currentCountry][0]);
-  const countries = useMemo(() => Object.keys(data), []);
-  const cities = useMemo(() => data[currentCountry], [currentCountry]);
-  const onChange = (e) => {
-    const currentCountry = e.target.value;
-    setCurrentCountry(currentCountry);
-    setCurrentCity(data[currentCountry][0]);
-  };
-  const onChange2 = (e) => {
-    setCurrentCity(e.target.value);
-  };
+export default function AddSearchTable({ children, props }) {
+  //props를 받아와서 props.지역,동네,판매자 등등 으로 동적으로 뿌리게 하기
   return (
     <TableBody>
       <TableRow>
         <TableCell align="center" sx={{ borderRight: "dotted 2px lightgray" }}>
-          <select
-            name="selectId1"
-            id="selectId1"
-            onChange={onChange}
-            value={currentCountry}
-            style={{ padding: "0.4rem", border: "none", outline: "none" }}
-          >
-            {countries.map((country, index) => (
-              <option key={index} value={country}>
-                {country}
-              </option>
-            ))}
-          </select>
+          서울 / 가산동
         </TableCell>
         <TableCell align="center" sx={{ borderRight: "dotted 2px lightgray" }}>
-          <select
-            name="selectId2"
-            id="selectId2"
-            value={currentCity}
-            onChange={onChange2}
-            style={{ padding: "0.4rem", border: "none", outline: "none" }}
-          >
-            {cities.map((city, index) => (
-              <option key={index} value={city}>
-                {city}
-              </option>
-            ))}
-          </select>
+          박경준 / 36.5
         </TableCell>
         <TableCell align="center" sx={{ borderRight: "dotted 2px lightgray" }}>
-          <input
-            placeholder="추적할 물품"
-            style={{
-              padding: "0.7rem",
-              width: "5rem",
-              border: "none",
-              outline: "none",
-            }}
-          />
+          삼성 노트북 팝니다
         </TableCell>
         <TableCell align="center" sx={{ borderRight: "dotted 2px lightgray" }}>
-          <input
-            placeholder="최저가"
-            style={{
-              padding: "0.7rem",
-              width: "5rem",
-              border: "none",
-              outline: "none",
-            }}
-          />
+          노트북
         </TableCell>
         <TableCell align="center" sx={{ borderRight: "dotted 2px lightgray" }}>
-          <input
-            placeholder="최고가"
-            style={{
-              padding: "0.7rem",
-              width: "5rem",
-              border: "none",
-              outline: "none",
-            }}
-          />
+          450.000원
         </TableCell>
         <TableCell align="center">
           <Button variant="outlined">이동</Button>

@@ -9,10 +9,10 @@ export default function Home() {
           sx={{
             m: 5,
             mt: 2,
-            background: "#fff6e5",
+            background: "#f5f5f5",
             borderRadius: "5px",
             p: 5,
-            boxShadow: "0px 0px 5px 1px #C0A786",
+            boxShadow: "0px 0px 5px 1px #ccc",
             height: "42rem",
           }}
         >

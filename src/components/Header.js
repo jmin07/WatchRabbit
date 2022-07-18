@@ -61,7 +61,9 @@ export default function Header() {
     }));
     const response = postSearchData(props);
     response.then((res) => {
-      // setSearchData(res);
+      console.log("res: ", res);
+      console.log("res.result: ", res.result);
+      // const item = res.result;
     });
   };
   const LogOut = () => {
@@ -80,9 +82,9 @@ export default function Header() {
               mt: 2,
               mb: 2,
               // background: "#F9F2EA",
-              background: "#fff6e5",
+              background: "#f5f5f5", //"#fff6e5"
               borderRadius: "5px",
-              boxShadow: "0px 0px 5px 1px #C0A786",
+              boxShadow: "0px 0px 5px 1px #ccc",
               p: 2,
             }}
           >
@@ -130,9 +132,11 @@ export default function Header() {
               </Grid>
               <Grid item xs={2}>
                 <Box>
-                  <NotificationsIcon
+                  {/* <NotificationsIcon
                     sx={{ color: "coral", m: 2, verticalAlign: "middle" }}
-                  />
+                  /> */}
+                  검색 된 단어: <p />
+                  서울 강남구 노트북
                 </Box>
               </Grid>
               <Grid item xs={1}>
@@ -225,7 +229,7 @@ export default function Header() {
                   ml: 6,
                   fontWeight: "bold",
                   color: "white",
-                  background: "#8dab66",
+                  background: "coral",
                 }}
                 variant="contained"
                 color="warning"
@@ -240,7 +244,7 @@ export default function Header() {
                   ml: 2,
                   fontWeight: "bold",
                   color: "white",
-                  background: "#8dab66",
+                  background: "coral",
                 }}
                 variant="contained"
                 color="warning"
@@ -255,7 +259,7 @@ export default function Header() {
                   ml: 2,
                   fontWeight: "bold",
                   color: "white",
-                  background: "#8dab66",
+                  background: "coral",
                 }}
                 variant="contained"
                 color="warning"
@@ -270,7 +274,7 @@ export default function Header() {
                   ml: 2,
                   fontWeight: "bold",
                   color: "white",
-                  background: "#8dab66",
+                  background: "coral",
                 }}
                 variant="contained"
                 color="warning"
@@ -285,7 +289,7 @@ export default function Header() {
                   ml: 2,
                   fontWeight: "bold",
                   color: "white",
-                  background: "#8dab66",
+                  background: "coral",
                 }}
                 variant="contained"
                 color="warning"

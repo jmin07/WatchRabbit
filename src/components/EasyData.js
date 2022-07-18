@@ -59,8 +59,8 @@ const data = [
 const LineDataChart = () => {
   return (
     <LineChart
-      width={600}
-      height={300}
+      width={550}
+      height={230}
       data={data}
       margin={{
         top: 5,
@@ -99,14 +99,25 @@ export default function EasyData() {
                 m: 2,
                 ml: 5,
                 p: 5,
-                background: "#fff6e5",
+                background: "white",
                 borderRadius: "5px",
-                boxShadow: "0px 0px 5px 1px #C0A786",
+                boxShadow: "0px 0px 5px 1px #ccc",
                 height: "17.5rem",
+                color: "dimgray",
               }}
             >
-              {/* 검색한 물품의 시세는 원 입니다 */}
-              검색한 도시는 {searchData.userCity} {searchData.userArea} 입니다
+              <h1 style={{ marginLeft: "20px" }}>
+                {searchData.userValue}의 가격 안내
+              </h1>
+              <br />
+              <Box sx={{ ml: 8 }}>
+                <h2>전국 평균 가격은 {}원 입니다.</h2>
+                <h2>
+                  {searchData.userCity} {searchData.userArea}의 평균 가격은 {}원
+                  입니다.
+                </h2>
+              </Box>
+              {/* 검색한 도시는 {searchData.userCity} {searchData.userArea} 입니다 */}
             </Box>
           </Grid>
           <Grid item xs={6}>
@@ -115,13 +126,15 @@ export default function EasyData() {
                 m: 2,
                 mr: 5,
                 p: 5,
-                background: "#fff6e5",
+                background: "white",
                 borderRadius: "5px",
-                boxShadow: "0px 0px 5px 1px #C0A786",
+                boxShadow: "0px 0px 5px 1px #ccc",
                 height: "17.5rem",
+                color: "dimgray",
               }}
             >
-              검색한 물품은 {searchData.userValue} 입니다
+              <h2>시세 차트</h2>
+              <LineDataChart />
             </Box>
           </Grid>
           <Grid item xs={6}>
@@ -130,13 +143,23 @@ export default function EasyData() {
                 m: 2,
                 ml: 5,
                 p: 5,
-                background: "#fff6e5",
+                background: "white",
                 borderRadius: "5px",
-                boxShadow: "0px 0px 5px 1px #C0A786",
+                boxShadow: "0px 0px 5px 1px #ccc",
                 height: "17.5rem",
+                color: "dimgray",
               }}
             >
-              <LineDataChart />
+              <h1>{searchData.userValue}의 판매 게시글 수 안내</h1>
+              <br />
+
+              <Box sx={{ ml: 8 }}>
+                <h2>전국 판매 게시글 수는 {}개 입니다.</h2>
+                <h2>
+                  {searchData.userCity} {searchData.userArea}의 판매 게시글 수는{" "}
+                  {}개 입니다.
+                </h2>
+              </Box>
             </Box>
           </Grid>
           <Grid item xs={6}>
@@ -145,13 +168,18 @@ export default function EasyData() {
                 m: 2,
                 mr: 5,
                 p: 5,
-                background: "#fff6e5",
+                background: "white",
                 borderRadius: "5px",
-                boxShadow: "0px 0px 5px 1px #C0A786",
+                boxShadow: "0px 0px 5px 1px #ccc",
                 height: "17.5rem",
+                color: "dimgray",
               }}
             >
-              지역, 동네 위치정보
+                            <h1>로그인한 아이디의 알림 설정</h1>
+                            <br/>
+                            <h2>현재 설정된 알림 대상은 알림설정글수 개입니다.</h2>
+                            <h2>다음 메일 알림은 메일전송예정시간 입니다.</h2>
+
             </Box>
           </Grid>
         </Grid>

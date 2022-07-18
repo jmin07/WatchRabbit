@@ -9,14 +9,14 @@ export default function Searchpage() {
           sx={{
             m: 5,
             mt: 2,
-            background: "#fff6e5",
+            background: "#f5f5f5",
             borderRadius: "5px",
             p: 5,
-            boxShadow: "0px 0px 5px 1px #C0A786",
-            height: "42rem",
+            boxShadow: "0px 0px 5px 1px #ccc",
+            height: "100vh",
           }}
         >
-          {}의 {}에 있는 {} 판매 현황
+          서울 가산동에 있는 삼성 노트북 판매 현황
           <SearchTable />
         </Box>
       </Container>

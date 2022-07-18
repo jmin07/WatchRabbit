@@ -74,10 +74,10 @@ export default function Title() {
       <CenterDiv
         width="40%"
         height="90%"
-        boxShadow="0px 0px 5px 1px #C0A786"
+        boxShadow="0px 0px 5px 1px #ccc"
         borderRadius="7px"
         // backgroundColor="#F9F2EA"
-        backgroundColor="#fff6e5"
+        backgroundColor="#f5f5f5"//"#fff6e5"
       >
         <Grid
           container
