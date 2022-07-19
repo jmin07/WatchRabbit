@@ -18,11 +18,12 @@ import { useState } from "react";
 import { TitleContext } from "./contexts/TitleContext";
 import { SearchDataContext } from "./contexts/SearchDataContext";
 import { DBdataContext } from "./contexts/DBdataContext";
+import { SumDataContext } from "./contexts/SumDataContext";
 
 function App() {
   const [titleOn, setTitleOn] = useState(true);
   const [searchData, setSearchData] = useState({
-    userCity: "도시",
+    userCity: "전국",
     userArea: "지역",
     userValue: "물품",
   });
@@ -36,26 +37,30 @@ function App() {
       Province: "",
       Nickname: "",
       Temperature: "",
+      UpdateTime: "",
     },
   ]);
+  const [sumData, setSumData] = useState([]);
 
   return (
     <TitleContext.Provider value={{ titleOn, setTitleOn }}>
       <SearchDataContext.Provider value={{ searchData, setSearchData }}>
         <DBdataContext.Provider value={{ DBdata, setDBdata }}>
-          {titleOn ? (
-            <Title />
-          ) : (
-            <Routes>
-              <Route path="/" element={<Mainpage />} />
-              <Route path="trace" element={<Tracepage />} />
-              <Route path="data" element={<Datapage />} />
-              <Route path="search" element={<Searchpage />} />
-              <Route path="statistics" element={<Statisticspage />} />
-              <Route path="signup" element={<SignUp />} />
-              <Route path="forgotpw" element={<ForgotPW />} />
-            </Routes>
-          )}
+          <SumDataContext.Provider value={{ sumData, setSumData }}>
+            {titleOn ? (
+              <Title />
+            ) : (
+              <Routes>
+                <Route path="/" element={<Mainpage />} />
+                <Route path="trace" element={<Tracepage />} />
+                <Route path="data" element={<Datapage />} />
+                <Route path="search" element={<Searchpage />} />
+                <Route path="statistics" element={<Statisticspage />} />
+                <Route path="signup" element={<SignUp />} />
+                <Route path="forgotpw" element={<ForgotPW />} />
+              </Routes>
+            )}
+          </SumDataContext.Provider>
         </DBdataContext.Provider>
       </SearchDataContext.Provider>
     </TitleContext.Provider>

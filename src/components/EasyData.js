@@ -11,6 +11,7 @@ import {
   Legend,
 } from "recharts";
 import { DBdataContext } from "../contexts/DBdataContext";
+import { SumDataContext } from "../contexts/SumDataContext";
 
 const data = [
   {
@@ -89,6 +90,7 @@ const LineDataChart = () => {
 export default function EasyData() {
   const { searchData } = useContext(SearchDataContext);
   const { DBdata } = useContext(DBdataContext);
+  const { sumData } = useContext(SumDataContext);
 
   console.log("객체", searchData);
 
@@ -116,8 +118,8 @@ export default function EasyData() {
               <Box sx={{ ml: 8 }}>
                 <h2>전국 평균 가격은 {}원 입니다.</h2>
                 <h2>
-                  {searchData.userCity} {searchData.userArea}의 평균 가격은 {}원
-                  입니다.
+                  {searchData.userCity} {searchData.userArea}의 평균 가격은
+                  {sumData[1]}원 입니다.
                 </h2>
               </Box>
               {/* 검색한 도시는 {searchData.userCity} {searchData.userArea} 입니다 */}
@@ -159,8 +161,8 @@ export default function EasyData() {
               <Box sx={{ ml: 8 }}>
                 <h2>전국 판매 게시글 수는 {}개 입니다.</h2>
                 <h2>
-                  {searchData.userCity} {searchData.userArea}의 판매 게시글 수는{" "}
-                  {}개 입니다.
+                  {searchData.userCity} {searchData.userArea}의 판매 게시글 수는
+                  {sumData[4]}개 입니다.
                 </h2>
               </Box>
             </Box>

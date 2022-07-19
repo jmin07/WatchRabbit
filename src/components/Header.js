@@ -29,12 +29,16 @@ import { TitleContext } from "../contexts/TitleContext";
 import { LoginDataContext } from "../contexts/LoginDataContext";
 import { SearchDataContext } from "../contexts/SearchDataContext";
 import { DBdataContext } from "../contexts/DBdataContext";
+import { SumDataContext } from "../contexts/SumDataContext";
 import { getLogOut, postSearchData } from "../api";
+
+import { resData, get_stData } from "../script/searchTable";
 
 export default function Header() {
   //
   const { searchData, setSearchData } = useContext(SearchDataContext);
   const { setDBdata } = useContext(DBdataContext);
+  const { sumData, setSumData } = useContext(SumDataContext);
   const navigate = useNavigate();
 
   const { setTitleOn } = useContext(TitleContext);
@@ -52,6 +56,8 @@ export default function Header() {
     const value = e.target[2].value;
     console.log(city, area, value);
     const data = "/db/test";
+    if (e.target[0].value === "전국") {
+    }
     const props = {
       path: data,
       userCity: city,
@@ -67,6 +73,8 @@ export default function Header() {
       console.log("res: ", res);
       // const item = res.result;
       setDBdata(res);
+      setSumData(get_stData(res));
+      console.log("평균,최저,최고값", sumData);
     });
   };
   const LogOut = () => {
@@ -141,7 +149,8 @@ export default function Header() {
                     sx={{ color: "coral", m: 2, verticalAlign: "middle" }}
                   /> */}
                   검색 된 단어: <p />
-                  {searchData.userCity} {searchData.userArea} {searchData.userValue}
+                  {searchData.userCity} {searchData.userArea}{" "}
+                  {searchData.userValue}
                 </Box>
               </Grid>
               <Grid item xs={1}>
