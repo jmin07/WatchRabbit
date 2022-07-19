@@ -37,7 +37,7 @@ import { resData, get_stData } from "../script/searchTable";
 export default function Header() {
   //
   const { searchData, setSearchData } = useContext(SearchDataContext);
-  const { setDBdata } = useContext(DBdataContext);
+  const { DBdata, setDBdata } = useContext(DBdataContext);
   const { sumData, setSumData } = useContext(SumDataContext);
   const navigate = useNavigate();
 
@@ -70,12 +70,15 @@ export default function Header() {
     }));
     const response = postSearchData(props);
     response.then((res) => {
+      const data = get_stData(DBdata)
       console.log("res: ", res);
       // const item = res.result;
       setDBdata(res);
-      setSumData(get_stData(res));
-      console.log("평균,최저,최고값", sumData);
+      setSumData(data);
+      console.log("평균,최저,최고값data", data);
+      console.log("평균,최저,최고값sumData", sumData);
     });
+   
   };
   const LogOut = () => {
     const data = "/auth/logout";

@@ -260,3 +260,24 @@ export const MainInput = styled.input`
   left: 35%;
   top: 38%;
 `;
+
+export const BubbleBox = styled.div`
+    font-size: 25px;
+    position: relative;
+    margin: 0px;
+    padding: 20px;
+    width: 800px;
+    height: 130px;
+    color: #fff;
+    border-radius: 10px;
+    background-color: coral;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 100px;
+        right: -30px;
+        border-left: 40px solid coral;
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+    }
+`;
