@@ -99,7 +99,7 @@ export default function EasyData() {
           <Grid item xs={6}>
             <Box
               sx={{
-                m: 2,
+                mr: 2,
                 ml: 5,
                 p: 5,
                 background: "white",
@@ -126,7 +126,7 @@ export default function EasyData() {
           <Grid item xs={6}>
             <Box
               sx={{
-                m: 2,
+                ml: 2,
                 mr: 5,
                 p: 5,
                 background: "white",

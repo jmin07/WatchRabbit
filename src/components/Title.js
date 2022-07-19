@@ -85,7 +85,7 @@ export default function Title() {
         >
           <Grid item sx={{ margin: 3 }}></Grid>
         </Grid>
-        <Grid container sx={{ mt: 27 }}>
+        <Grid container sx={{ mt: 35 }}>
           <Grid item xs={12}>
             <Box
               sx={{
