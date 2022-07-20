@@ -65,10 +65,10 @@ export default function ForgotPW() {
       <CenterDiv
         width="25%"
         height="100vh"
-        boxShadow="0px 0px 5px 1px #C0A786"
+        boxShadow="0px 0px 5px 1px #ccc"
         borderRadius="2px"
         backgroundColor="white"
-        padding="3rem 5rem 3rem 5rem"
+        padding="0rem 5rem 0rem 5rem"
         textAlign="none"
       >
         <form onSubmit={onSubmit}>
@@ -77,6 +77,8 @@ export default function ForgotPW() {
               fontSize: "30px",
               color: "coral",
               m: 2,
+              pt: 5,
+
               textAlign: "center",
               fontWeight: "bold",
             }}
@@ -84,7 +86,7 @@ export default function ForgotPW() {
             비밀번호 변경
           </Typography>
           ​
-          <Divider sx={{ margin: "2rem 0rem 3rem 0rem" }} />​
+          <Divider sx={{ margin: "0rem 0rem 3rem 0rem" }} />​
           <Typography sx={{ color: "dimgray", mb: 3 }}>
             가입한 이메일 주소를 입력해주세요
             <br />

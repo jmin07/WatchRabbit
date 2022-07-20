@@ -1,7 +1,19 @@
 import { Box, Container } from "@mui/material";
-import SearchTable from "./SearchTable"
+import styled from "styled-components";
+import SearchTable from "./SearchTable";
+import { SearchDataContext } from "../contexts/SearchDataContext";
+import { useContext } from "react";
+
+const TitleTextStyle = styled.div`
+  font-size: 1.5rem;
+  color: gray;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+`;
 
 export default function Searchpage() {
+  const { searchData } = useContext(SearchDataContext);
   return (
     <>
       <Container maxWidth="xl">
@@ -16,7 +28,10 @@ export default function Searchpage() {
             height: "100vh",
           }}
         >
-          서울 가산동에 있는 삼성 노트북 판매 현황
+          <TitleTextStyle>
+            {searchData.userCity} {searchData.userArea} {searchData.userValue} 판매 현황
+          </TitleTextStyle>
+          <br />
           <SearchTable />
         </Box>
       </Container>

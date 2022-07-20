@@ -262,12 +262,12 @@ export const MainInput = styled.input`
 `;
 
 export const BubbleBox = styled.div`
-    font-size: 25px;
+    font-size: 22px;
     position: relative;
     margin: 0px;
-    padding: 20px;
-    width: 800px;
-    height: 130px;
+    padding: 30px;
+    width: 600px;
+    height: 120px;
     color: #fff;
     border-radius: 10px;
     background-color: coral;

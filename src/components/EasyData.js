@@ -92,8 +92,6 @@ export default function EasyData() {
   const { DBdata } = useContext(DBdataContext);
   const { sumData } = useContext(SumDataContext);
 
-  console.log("객체", searchData);
-
   return (
     <>
       <Container maxWidth="xl" sx={{ background: "" }}>

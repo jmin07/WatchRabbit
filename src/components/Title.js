@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Paper,
   IconButton,
@@ -52,7 +52,7 @@ export default function Title() {
       userValue: value,
     };
     setTitleOn(false);
-    navigate("/data");
+    navigate("/statistics");
     setSearchData((searchData) => ({
       ...props,
     }));
@@ -77,7 +77,7 @@ export default function Title() {
         boxShadow="0px 0px 5px 1px #ccc"
         borderRadius="7px"
         // backgroundColor="#F9F2EA"
-        backgroundColor="#f5f5f5"//"#fff6e5"
+        backgroundColor="#f5f5f5" //"#fff6e5"
       >
         <Grid
           container
@@ -125,11 +125,13 @@ export default function Title() {
           </Grid>
 
           <Grid item xs={12} sx={{ m: 7 }}>
-            <Tooltip title="Main Page" arrow TransitionComponent={Zoom}>
-              <IconButton onClick={() => setTitleOn(false)}>
-                <HomeIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
+            <Link to="/main">
+              <Tooltip title="Main Page" arrow TransitionComponent={Zoom}>
+                <IconButton onClick={() => setTitleOn(false)}>
+                  <HomeIcon fontSize="large" />
+                </IconButton>
+              </Tooltip>
+            </Link>
           </Grid>
         </Grid>
       </CenterDiv>

@@ -32,7 +32,8 @@ import { DBdataContext } from "../contexts/DBdataContext";
 import { SumDataContext } from "../contexts/SumDataContext";
 import { getLogOut, postSearchData } from "../api";
 
-import { resData, get_stData } from "../script/searchTable";
+import { get_stData } from "../script/searchTable";
+import { dummyData } from "../script/dummydata";
 
 export default function Header() {
   //
@@ -54,7 +55,7 @@ export default function Header() {
     const city = e.target[0].value;
     const area = e.target[1].value;
     const value = e.target[2].value;
-    console.log(city, area, value);
+    // console.log(city, area, value);
     const data = "/db/test";
     if (e.target[0].value === "전국") {
     }
@@ -64,21 +65,24 @@ export default function Header() {
       userArea: area,
       userValue: value,
     };
-    navigate("/data");
+    navigate("/statistics");
     setSearchData((searchData) => ({
       ...props,
     }));
     const response = postSearchData(props);
     response.then((res) => {
-      const data = get_stData(DBdata)
+      const data = get_stData(res);
       console.log("res: ", res);
       // const item = res.result;
       setDBdata(res);
-      setSumData(data);
+      setSumData(data); //백과 연결 할때 위치
       console.log("평균,최저,최고값data", data);
       console.log("평균,최저,최고값sumData", sumData);
     });
-   
+    //더미데이터 쓸때
+    const dummy = get_stData(dummyData);
+    setSumData(dummy);
+    //더미더미
   };
   const LogOut = () => {
     const data = "/auth/logout";
@@ -99,31 +103,33 @@ export default function Header() {
               mr: 5,
               // background: "#F9F2EA",
               background: "#f5f5f5", //"#fff6e5"
-              borderRadius: "5px",
+              borderRadius: "0px 0px 5px 5px",
               boxShadow: "0px 0px 5px 1px #ccc",
               p: 2,
             }}
           >
             <Grid container>
               <Grid item xs={3}>
-                <Button
-                  size="small"
-                  color="warning"
-                  sx={{
-                    typography: "Watch Rabbit",
-                    fontSize: "2rem",
-                    letterSpacing: 3,
-                    color: "coral",
-                    fontFamily: "ulsanjunggu",
-                    borderRadius: "1rem",
-                  }}
-                  onClick={() => setTitleOn(true)}
-                >
-                  Watch <span style={{ color: "#357a38" }}>Rabbit</span>
-                  <Img src="/img/carrot.png" width="35px" />
-                </Button>
+              <Link to="/" style={{textDecoration: "none"}}>
+                  <Button
+                    size="small"
+                    color="warning"
+                    sx={{
+                      typography: "Watch Rabbit",
+                      fontSize: "2rem",
+                      letterSpacing: 3,
+                      color: "coral",
+                      fontFamily: "ulsanjunggu",
+                      borderRadius: "1rem",
+                    }}
+                    onClick={() => setTitleOn(true)}
+                  >
+                    Watch <span style={{ color: "#357a38" }}>Rabbit</span>
+                    <Img src="/img/carrot.png" width="35px" />
+                  </Button>
+                </Link>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={5}>
                 <Paper
                   component="form"
                   action="/data"
@@ -146,14 +152,18 @@ export default function Header() {
                   </IconButton>
                 </Paper>
               </Grid>
-              <Grid item xs={2}>
-                <Box>
-                  {/* <NotificationsIcon
+              <Grid item xs={3}>
+                <Box sx={{ display: "flex", float: "left" }}>
+                  <NotificationsIcon
                     sx={{ color: "coral", m: 2, verticalAlign: "middle" }}
-                  /> */}
-                  검색 된 단어: <p />
+                  />
+                  <div style={{ color: "dimgray", marginTop: "1.1rem" }}>
+                    5개의 물품을 추적중입니다...
+                  </div>
+
+                  {/* 검색 된 단어: <p />
                   {searchData.userCity} {searchData.userArea}{" "}
-                  {searchData.userValue}
+                  {searchData.userValue} */}
                 </Box>
               </Grid>
               <Grid item xs={1}>
@@ -196,20 +206,7 @@ export default function Header() {
                   <Divider sx={{ color: "gray", mb: 2 }}>menu</Divider>
 
                   <Box>
-                    <Link to="/" style={{ textDecorationLine: "none" }}>
-                      <Button
-                        sx={{
-                          fontWeight: "bold",
-                          color: "white",
-                          background: "coral",
-                        }}
-                        variant="contained"
-                        color="warning"
-                      >
-                        사이트 안내
-                      </Button>
-                    </Link>
-
+                    {/* 
                     <Link to="/data" style={{ textDecorationLine: "none" }}>
                       <Button
                         sx={{
@@ -223,22 +220,7 @@ export default function Header() {
                       >
                         간편 데이터
                       </Button>
-                    </Link>
-
-                    <Link to="/search" style={{ textDecorationLine: "none" }}>
-                      <Button
-                        sx={{
-                          ml: 2,
-                          fontWeight: "bold",
-                          color: "white",
-                          background: "coral",
-                        }}
-                        variant="contained"
-                        color="warning"
-                      >
-                        물품 검색
-                      </Button>
-                    </Link>
+                    </Link> */}
 
                     <Link
                       to="/statistics"
@@ -254,7 +236,22 @@ export default function Header() {
                         variant="contained"
                         color="warning"
                       >
-                        통계 정보
+                        시세 통계
+                      </Button>
+                    </Link>
+
+                    <Link to="/search" style={{ textDecorationLine: "none" }}>
+                      <Button
+                        sx={{
+                          ml: 2,
+                          fontWeight: "bold",
+                          color: "white",
+                          background: "coral",
+                        }}
+                        variant="contained"
+                        color="warning"
+                      >
+                        판매 현황
                       </Button>
                     </Link>
 
@@ -270,6 +267,21 @@ export default function Header() {
                         color="warning"
                       >
                         추적 알림
+                      </Button>
+                    </Link>
+
+                    <Link to="/main" style={{ textDecorationLine: "none" }}>
+                      <Button
+                        sx={{
+                          ml: 2,
+                          fontWeight: "bold",
+                          color: "white",
+                          background: "coral",
+                        }}
+                        variant="contained"
+                        color="warning"
+                      >
+                        사이트 안내
                       </Button>
                     </Link>
                   </Box>

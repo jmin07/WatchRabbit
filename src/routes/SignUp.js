@@ -88,11 +88,11 @@ export default function SignUp() {
     <>
       <CenterDiv
         width="25%"
-        height="90%"
-        boxShadow="0px 0px 5px 1px #C0A786"
+        height="100vh"
+        boxShadow="0px 0px 5px 1px #ccc"
         borderRadius="2px"
         backgroundColor="white"
-        padding="3rem 5rem 3rem 5rem"
+        padding="0rem 5rem 0rem 5rem"
         textAlign="none"
       >
         <form onSubmit={onSubmit}>
@@ -101,6 +101,7 @@ export default function SignUp() {
               fontSize: "30px",
               color: "coral",
               m: 2,
+              pt: 5,
               textAlign: "center",
               fontWeight: "bold",
             }}

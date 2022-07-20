@@ -10,44 +10,20 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { dummyData } from "../script/dummydata";
+import { chartDataFunc } from "../script/testscript";
 
-const data = [
-  {
-    date: "2022/7/10",
-    평균시세: 370000,
-  },
-  {
-    date: "2022/7/11",
-    평균시세: 339800,
-  },
-  {
-    date: "2022/7/12",
-    평균시세: 476000,
-  },
-  {
-    date: "2022/7/13",
-    평균시세: 390800,
-  },
-  {
-    date: "2022/7/14",
-    평균시세: 480000,
-  },
-  {
-    date: "2022/7/16",
-    평균시세: 432400,
-  },
-  {
-    date: "2022/7/17",
-    평균시세: 278000,
-  },
-];
+// import { RegionTestContext } from "../App";
 
 export const PriceChart = () => {
+  // const { regionTest } = useContext(RegionTestContext);
+  const chartData = chartDataFunc(dummyData);
   return (
     <LineChart
-      width={1300}
-      height={280}
-      data={data}
+      width={1270}
+      height={350}
+      data={chartData}
+      background={{ fill: "red" }}
       margin={{
         top: 5,
         right: 30,
@@ -62,10 +38,12 @@ export const PriceChart = () => {
       <Legend />
       <Line
         type="monotone"
-        dataKey="평균시세"
+        dataKey="평균가"
         stroke="coral"
         activeDot={{ r: 8 }}
       />
+      <Line type="monotone" dataKey="최저가" stroke="skyblue" />
+      <Line type="monotone" dataKey="최고가" stroke="#dc4343" />
     </LineChart>
   );
 };

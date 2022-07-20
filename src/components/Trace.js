@@ -1,6 +1,15 @@
 import { Box, Container } from "@mui/material";
 import TraceTable from "./TraceTable";
 import { Img, BubbleBox } from "../style/styled";
+import styled from "styled-components";
+
+const TitleTextStyle = styled.div`
+  font-size: 1.5rem;
+  color: gray;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+`;
 
 export default function Trace() {
   return (
@@ -14,26 +23,32 @@ export default function Trace() {
             borderRadius: "5px",
             p: 5,
             boxShadow: "0px 0px 5px 1px #ccc",
-            height: "42rem",
+            height: "100vh",
           }}
         >
-          <BubbleBox>
-            추적 알림 설정 추적할 상품을 설정하고 알림을 기다리세요.
-            <br />
-            Watch Rabbit이 추적하고 알려드립니다.
-            <p />
-            해당 서비스는 <b>로그인</b>이 필요한 서비스입니다!
-            <p />
-          </BubbleBox>
-          <Img
-            src="/img/WRN.png"
-            position="absolute"
-            top="200px"
-            left="1300px"
-            width="300px"
-            height="300px"
-          />
+          <TitleTextStyle>추적 알림</TitleTextStyle>
+          <br />
           <TraceTable />
+          <br />
+          <br />
+          <br />
+          <div style={{ display: "flex", float: "right" }}>
+            <BubbleBox>
+              추적 알림 설정 추적할 상품을 설정하고 알림을 기다리세요.
+              <br />
+              Watch Rabbit이 추적하고 알려드립니다.
+              <p />
+              해당 서비스는 <b>로그인</b>이 필요한 서비스입니다!
+              <p />
+            </BubbleBox>
+            <Img
+              src="/img/WRN.png"
+              // position="absolute"
+              // left="1200px"
+              width="200px"
+              height="200px"
+            />
+          </div>
         </Box>
       </Container>
     </>

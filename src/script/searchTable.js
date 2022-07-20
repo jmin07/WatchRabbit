@@ -115,7 +115,7 @@ function get_stData(resData) {
   const result = st_priceWithoutWon.reduce(function add(sum, currValue) {
     return sum + currValue;
   }, 0);
-  st_priceAverageAllRegion = result / st_priceWithoutWon.length;
+  st_priceAverageAllRegion = parseInt(result / st_priceWithoutWon.length);
   // console.log("평균값: " + st_priceAverageAllRegion);
   return [
     st_serchDay,
