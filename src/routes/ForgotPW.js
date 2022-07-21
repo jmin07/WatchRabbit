@@ -44,11 +44,11 @@ export default function ForgotPW() {
     const path = "/mail/pwd";
     const inputNumber = e.target.AthNumber.value;
     const userPassword = e.target.NewPassword.value;
-    const userEamil = e.target.email.value;
+    const userEmail = e.target.email.value;
 
     if (parseInt(getAthNumber) === parseInt(inputNumber)) {
       console.log("인증번호가 일치");
-      const props = { path, userPassword, userEamil };
+      const props = { path, userPassword, userEmail };
       const response = postFindPWD(props);
       response.then((res) => {
         if (res.isSuccess) {

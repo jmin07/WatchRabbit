@@ -137,7 +137,7 @@ export default function Login() {
               로그인
             </Button>
             <a
-              href="https://www.watchrabbit.co.kr/auth/google"
+              href="https://www.watchrabbit.co.kr:8443/auth/google"
               style={{ textDecoration: "none" }}
             >
               <GoogleButton
@@ -156,7 +156,7 @@ export default function Login() {
               </GoogleButton>
             </a>
             <a
-              href="https://www.watchrabbit.co.kr/auth/kakao"
+              href="https://www.watchrabbit.co.kr:8443/auth/kakao"
               style={{ textDecoration: "none" }}
             >
               <KakaoButton

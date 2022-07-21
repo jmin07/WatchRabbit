@@ -4,8 +4,8 @@ import { Img, BubbleBox } from "../style/styled";
 import styled from "styled-components";
 
 const TitleTextStyle = styled.div`
-  font-size: 1.5rem;
-  color: gray;
+  font-size: 1.7rem;
+  color: #383b40;
   font-weight: bold;
   text-align: center;
   margin-bottom: 1rem;
@@ -24,6 +24,7 @@ export default function Trace() {
             p: 5,
             boxShadow: "0px 0px 5px 1px #ccc",
             height: "100vh",
+            fontFamily: "MICEGothic Bold",
           }}
         >
           <TitleTextStyle>추적 알림</TitleTextStyle>

@@ -20,8 +20,6 @@ import { SearchDataContext } from "./contexts/SearchDataContext";
 import { DBdataContext } from "./contexts/DBdataContext";
 import { SumDataContext } from "./contexts/SumDataContext";
 
-import { createContext } from "react";
-
 function App() {
   const [titleOn, setTitleOn] = useState(true);
   const [searchData, setSearchData] = useState({
@@ -43,16 +41,12 @@ function App() {
     },
   ]);
   const [sumData, setSumData] = useState([]);
-  const RegionTestContext = createContext(null);
-
-  const [regionTest, setRegionTest] = useState(RegionTestContext); //지역별 차트 테스트 state
 
   return (
     <TitleContext.Provider value={{ titleOn, setTitleOn }}>
       <SearchDataContext.Provider value={{ searchData, setSearchData }}>
         <DBdataContext.Provider value={{ DBdata, setDBdata }}>
           <SumDataContext.Provider value={{ sumData, setSumData }}>
-            <RegionTestContext.Provider value={{ regionTest, setRegionTest }}>
               <Routes>
                 <Route path="/" element={<Title />} />
                 <Route path="main" element={<Mainpage />} />
@@ -63,7 +57,6 @@ function App() {
                 <Route path="signup" element={<SignUp />} />
                 <Route path="forgotpw" element={<ForgotPW />} />
               </Routes>
-            </RegionTestContext.Provider>
           </SumDataContext.Provider>
         </DBdataContext.Provider>
       </SearchDataContext.Provider>

@@ -124,7 +124,7 @@ export default function Title() {
             </Paper>
           </Grid>
 
-          <Grid item xs={12} sx={{ m: 7 }}>
+          <Grid item xs={12} sx={{ m: 15 }}>
             <Link to="/main">
               <Tooltip title="Main Page" arrow TransitionComponent={Zoom}>
                 <IconButton onClick={() => setTitleOn(false)}>
@@ -138,7 +138,7 @@ export default function Title() {
 
       <Box
         sx={{
-          height: "100vh",
+          height: "99.5%",
           width: "100%",
           background: "rgba(0, 0, 0, 0.8)",
           position: "absolute",
@@ -150,31 +150,51 @@ export default function Title() {
       >
         <IconButton
           onClick={() => setSideBar(false)}
-          sx={{ position: "absolute", top: "95%", left: "50%" }}
+          sx={{ position: "absolute", top: "95%", left: "48.7%" }}
         >
           <ArrowDropUpIcon fontSize="large" sx={{ color: "white" }} />
         </IconButton>
         <Box
-          sx={{ color: "white", position: "absolute", left: "20%", top: "10%" }}
+          sx={{
+            color: "white",
+            position: "absolute",
+            left: "35%",
+            top: "10%",
+            textAlign: "center",
+          }}
         >
-          <h1>안녕하세요</h1> <p />
-          <h2>중고물품의 시세를</h2>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <h2>검색창에 시세를 알고싶은 중고물품을 검색해보세요!</h2>
           <p />
-          <h2>알려주고 감시해주는</h2>
-          <p />
-          <h2>
-            <span style={{ color: "" }}>감시토끼</span> 입니다
-          </h2>
           <br />
           <br />
           <br />
-          아무곳이나 클릭하세요
+          <br />
+          <br />
+          <br />
+          홈아이콘 클릭시 홈페이지로 이동합니다.
         </Box>
       </Box>
       <Box
         sx={{
           position: "absolute",
-          left: "50%",
+          left: "48.7%",
           top: sideBar ? "-20%" : "-2%",
           transitionDuration: "1s",
         }}

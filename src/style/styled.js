@@ -191,6 +191,8 @@ export const Img = styled.img`
   top: ${(props) => props.top};
   left: ${(props) => props.left};
   opacity: ${(props) => props.opacity};
+  display: ${(props) => props.display};
+  margin-left: ${(props) => props.marginLeft};
 `;
 
 export const Container = styled.div`

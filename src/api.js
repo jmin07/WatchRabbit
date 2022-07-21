@@ -1,4 +1,4 @@
-const BASE_URL = "https://www.watchrabbit.co.kr";
+const BASE_URL = "https://www.watchrabbit.co.kr:8443";
 
 export async function postLoginData(Data) {
   const response = await fetch(`${BASE_URL}${Data.path}`, {

@@ -9,41 +9,61 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
 } from "recharts";
-import { dummyData } from "../script/dummydata";
+import { regiondummydata } from "../script/regiondummydata";
 import { chartDataFunc } from "../script/testscript";
-
-// import { RegionTestContext } from "../App";
+import { regionChartFunc } from "../script/regionChartFunc";
 
 export const PriceChart = () => {
-  // const { regionTest } = useContext(RegionTestContext);
-  const chartData = chartDataFunc(dummyData);
+  const chartData = regionChartFunc(regiondummydata);
   return (
-    <LineChart
-      width={1270}
-      height={350}
-      data={chartData}
-      background={{ fill: "red" }}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="date" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="평균가"
-        stroke="coral"
-        activeDot={{ r: 8 }}
-      />
-      <Line type="monotone" dataKey="최저가" stroke="skyblue" />
-      <Line type="monotone" dataKey="최고가" stroke="#dc4343" />
-    </LineChart>
+    // <LineChart
+    //   width={1270}
+    //   height={350}
+    //   data={chartData}
+    //   margin={{
+    //     top: 5,
+    //     right: 30,
+    //     left: 20,
+    //     bottom: 5,
+    //   }}
+    // >
+    //   <CartesianGrid strokeDasharray="3 3" />
+    //   <XAxis dataKey="region" />
+    //   <YAxis />
+    //   <Tooltip />
+    //   <Legend />
+    //   <Line
+    //     type="monotone"
+    //     dataKey="avgPrice"
+    //     stroke="coral"
+    //     activeDot={{ r: 8 }}
+    //   />
+    //   {/* <Line type="monotone" dataKey="최저가" stroke="skyblue" />
+    //   <Line type="monotone" dataKey="최고가" stroke="#dc4343" /> */}
+    // </LineChart>
+      <BarChart
+        width={1270}
+        height={350}
+        data={chartData}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="region" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="평균가" stackId="a" fill="coral" />
+        <Bar dataKey="최저가" stackId="a" fill="skyblue" />
+        <Bar dataKey="최고가" stackId="a" fill="#dc4343" />
+      </BarChart>
   );
 };

@@ -10,7 +10,7 @@ const GridStyle = styled.div`
   background: white;
   padding: 1rem;
   border-radius: 0.5rem;
-  height: 9rem;
+  height: 5rem;
   box-shadow: 0px 0px 3px 1px #ccc;
   text-align: center;
 `;
@@ -23,18 +23,18 @@ const ChartStyle = styled.div`
   padding-top: 2rem;
 `;
 const MainTextStyle = styled.span`
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: ${(props) => props.color || "coral"};
   font-weight: bold;
 `;
 const SubTextStyle = styled.span`
   font-size: 1.1rem;
-  color: dimgray;
+  color: #383b40;
   font-weight: bold;
 `;
 const TitleTextStyle = styled.div`
-  font-size: 1.5rem;
-  color: gray;
+  font-size: 1.7rem;
+  color: #383b40;
   font-weight: bold;
   text-align: center;
   margin-bottom: 1rem;
@@ -56,12 +56,14 @@ export default function Statistics() {
             p: 5,
             boxShadow: "0px 0px 5px 1px #ccc",
             height: "42rem",
+            fontFamily: "MICEGothic Bold",
           }}
         >
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TitleTextStyle>
-                {searchData.userCity} {searchData.userArea} {searchData.userValue} 시세 통계
+                {searchData.userCity} {searchData.userArea}{" "}
+                {searchData.userValue} 시세 통계
               </TitleTextStyle>
             </Grid>
             <Grid item xs={3}>
@@ -102,6 +104,8 @@ export default function Statistics() {
           {/* <h3>2022/7/10 ~ 2022/7/17 까지의 시세, 게시글 수입니다</h3> */}
           {/*캘린더 라이브러리*/}
           <br />
+          <br />
+          <TitleTextStyle>전국 {searchData.userValue} 시세</TitleTextStyle>
           <ChartStyle>
             <PriceChart /> {/*동적으로 데이터 변경*/}
           </ChartStyle>

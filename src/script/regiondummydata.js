@@ -1,4 +1,4 @@
-const dummyData = [
+const regiondummydata = [
     {
       Classification: "디지털기기",
       IDX: 9285,
@@ -222,5 +222,5 @@ const dummyData = [
       },
   ];
   
-  export { dummyData };
+  export { regiondummydata };
   

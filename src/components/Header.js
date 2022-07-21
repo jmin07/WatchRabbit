@@ -45,7 +45,8 @@ export default function Header() {
   const { setTitleOn } = useContext(TitleContext);
   const [login, setLogin] = useState({
     TrueFalse: false,
-    profileImage: "img/carrot.png",
+    profileImage:
+      "https://watchrabbit.s3.ap-northeast-2.amazonaws.com/carrot+(1).png",
   });
   //
   const [modalOpen, setModalOpen] = useState(false);
@@ -80,8 +81,8 @@ export default function Header() {
       console.log("평균,최저,최고값sumData", sumData);
     });
     //더미데이터 쓸때
-    const dummy = get_stData(dummyData);
-    setSumData(dummy);
+    // const dummy = get_stData(dummyData);
+    // setSumData(dummy);
     //더미더미
   };
   const LogOut = () => {
@@ -110,7 +111,7 @@ export default function Header() {
           >
             <Grid container>
               <Grid item xs={3}>
-              <Link to="/" style={{textDecoration: "none"}}>
+                <Link to="/" style={{ textDecoration: "none" }}>
                   <Button
                     size="small"
                     color="warning"
@@ -203,7 +204,15 @@ export default function Header() {
               </Grid>
               <Grid item xs={12}>
                 <Box>
-                  <Divider sx={{ color: "gray", mb: 2 }}>menu</Divider>
+                  <Divider
+                    sx={{
+                      color: "gray",
+                      mb: 2,
+                      fontFamily: "KoPubDotumMedium",
+                    }}
+                  >
+                    menu
+                  </Divider>
 
                   <Box>
                     {/* 
