@@ -18,11 +18,13 @@ export default function SearchTable() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const dataCell = DBdata; //실제 데이터
-  // const dataCell = dummydata; // 더미 데이터
+  // const dataCell = DBdata; //실제 데이터
+  const dataCell = dummydata; // 더미 데이터
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    console.log("rowsPerPage", rowsPerPage);
+    console.log("newPage", newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -150,47 +152,49 @@ export default function SearchTable() {
           </TableHead>
 
           <TableBody>
-            {dataCell.map((dataCell) => {
-              return (
-                <TableRow>
-                  <TableCell
-                    align="center"
-                    sx={{ borderRight: "dotted 1px lightgray" }}
-                  >
-                    {dataCell.Region} / {dataCell.Province}
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{ borderRight: "dotted 1px lightgray" }}
-                  >
-                    {dataCell.Nickname} / {dataCell.Temperature}
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{ borderRight: "dotted 1px lightgray" }}
-                  >
-                    {dataCell.Title}
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{ borderRight: "dotted 1px lightgray" }}
-                  >
-                    {dataCell.Classification}
-                  </TableCell>
-                  <TableCell
-                    align="center"
-                    sx={{ borderRight: "dotted 1px lightgray" }}
-                  >
-                    {dataCell.Price}
-                  </TableCell>
-                  <TableCell align="center">
-                    <a href={dataCell.URL}>
-                      <Button variant="outlined">이동</Button>
-                    </a>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+            {dataCell
+              .slice(page * rowsPerPage, (page + 1) * rowsPerPage)
+              .map((dataCell) => {
+                return (
+                  <TableRow>
+                    <TableCell
+                      align="center"
+                      sx={{ borderRight: "dotted 1px lightgray" }}
+                    >
+                      {dataCell.Region} / {dataCell.Province}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{ borderRight: "dotted 1px lightgray" }}
+                    >
+                      {dataCell.Nickname} / {dataCell.Temperature}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{ borderRight: "dotted 1px lightgray" }}
+                    >
+                      {dataCell.Title}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{ borderRight: "dotted 1px lightgray" }}
+                    >
+                      {dataCell.Classification}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{ borderRight: "dotted 1px lightgray" }}
+                    >
+                      {dataCell.Price}
+                    </TableCell>
+                    <TableCell align="center">
+                      <a href={dataCell.URL}>
+                        <Button variant="outlined">이동</Button>
+                      </a>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
             {/* <AddSearchTable /> */}
           </TableBody>
         </Table>
@@ -202,7 +206,15 @@ export default function SearchTable() {
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[5, 10, 25, 50]}
+        labelRowsPerPage="게시글 범위"
+        labelDisplayedRows={function defaultLabelDisplayedRows({
+          from,
+          to,
+          count,
+        }) {
+          return `전체 ${count !== -1 ? count : `more than ${to}`}개 중 ${from}–${to}까지`;
+        }}
       ></TablePagination>
     </>
   );
