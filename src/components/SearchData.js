@@ -25,7 +25,7 @@ export default function Searchpage() {
             borderRadius: "5px",
             p: 5,
             boxShadow: "0px 0px 5px 1px #ccc",
-            height: "100vh",
+            height: "100%",
             fontFamily: "MICEGothic Bold",
 
           }}

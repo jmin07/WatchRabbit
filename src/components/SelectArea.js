@@ -5,7 +5,7 @@ export default function SelectArea() {
   // let countries = Object.keys(data); // key ['서울시', '안양시', '수원시']
   // let city = data["서울"]; // value
 
-  const [currentCountry, setCurrentCountry] = useState("서울");
+  const [currentCountry, setCurrentCountry] = useState("전국");
   const [currentCity, setCurrentCity] = useState(data[currentCountry][0]);
 
   // const countries = Object.keys(data);

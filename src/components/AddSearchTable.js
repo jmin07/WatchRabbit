@@ -12,7 +12,7 @@ export default function AddSearchTable({ children, props }) {
   const { DBdata } = useContext(DBdataContext);
 
   return (
-    <TableBody>
+    <>
       {DBdata.map((DBdata) => (
         <TableRow>
           <TableCell
@@ -52,6 +52,6 @@ export default function AddSearchTable({ children, props }) {
           </TableCell>
         </TableRow>
       ))}
-    </TableBody>
+    </>
   );
 }

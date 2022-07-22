@@ -30,16 +30,18 @@ import { LoginDataContext } from "../contexts/LoginDataContext";
 import { SearchDataContext } from "../contexts/SearchDataContext";
 import { DBdataContext } from "../contexts/DBdataContext";
 import { SumDataContext } from "../contexts/SumDataContext";
+import { AllDBdataContext } from "../contexts/AllDBdataContext";
 import { getLogOut, postSearchData } from "../api";
 
 import { get_stData } from "../script/searchTable";
-import { dummyData } from "../script/dummydata";
+import { dummydata } from "../script/dummydata";
 
 export default function Header() {
   //
   const { searchData, setSearchData } = useContext(SearchDataContext);
   const { DBdata, setDBdata } = useContext(DBdataContext);
   const { sumData, setSumData } = useContext(SumDataContext);
+  const { setAllDBdata } = useContext(AllDBdataContext);
   const navigate = useNavigate();
 
   const { setTitleOn } = useContext(TitleContext);
@@ -58,31 +60,35 @@ export default function Header() {
     const value = e.target[2].value;
     // console.log(city, area, value);
     const data = "/db/test";
-    if (e.target[0].value === "전국") {
-    }
+    // if (e.target[0].value === "전국") {
+    // }
     const props = {
       path: data,
       userCity: city,
       userArea: area,
       userValue: value,
     };
-    navigate("/statistics");
     setSearchData((searchData) => ({
       ...props,
     }));
     const response = postSearchData(props);
     response.then((res) => {
-      const data = get_stData(res);
-      console.log("res: ", res);
-      // const item = res.result;
-      setDBdata(res);
-      setSumData(data); //백과 연결 할때 위치
-      console.log("평균,최저,최고값data", data);
-      console.log("평균,최저,최고값sumData", sumData);
+      let data;
+      if (e.target[0].value === "전국") {
+        data = get_stData(res.result.total);
+        setDBdata(res.result.total);
+      } else {
+        data = get_stData(res.result.local);
+        setDBdata(res.result.local);
+      }
+      setAllDBdata(res.result.total);
+      setSumData(data);
     });
     //더미데이터 쓸때
-    // const dummy = get_stData(dummyData);
+    // const dummy = get_stData(dummydata);
     // setSumData(dummy);
+    // setDBdata(dummydata);
+    // setAllDBdata(dummydata);
     //더미더미
   };
   const LogOut = () => {

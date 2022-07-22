@@ -19,6 +19,7 @@ import { TitleContext } from "./contexts/TitleContext";
 import { SearchDataContext } from "./contexts/SearchDataContext";
 import { DBdataContext } from "./contexts/DBdataContext";
 import { SumDataContext } from "./contexts/SumDataContext";
+import { AllDBdataContext } from "./contexts/AllDBdataContext";
 
 function App() {
   const [titleOn, setTitleOn] = useState(true);
@@ -40,6 +41,19 @@ function App() {
       UpdateTime: "",
     },
   ]);
+  const [allDBdata, setAllDBdata] = useState([
+    {
+      URL: "",
+      Title: "",
+      Price: "",
+      Classification: "",
+      Region: "",
+      Province: "",
+      Nickname: "",
+      Temperature: "",
+      UpdateTime: "",
+    },
+  ]);
   const [sumData, setSumData] = useState([]);
 
   return (
@@ -47,6 +61,7 @@ function App() {
       <SearchDataContext.Provider value={{ searchData, setSearchData }}>
         <DBdataContext.Provider value={{ DBdata, setDBdata }}>
           <SumDataContext.Provider value={{ sumData, setSumData }}>
+            <AllDBdataContext.Provider value={{ allDBdata, setAllDBdata }}>
               <Routes>
                 <Route path="/" element={<Title />} />
                 <Route path="main" element={<Mainpage />} />
@@ -57,6 +72,7 @@ function App() {
                 <Route path="signup" element={<SignUp />} />
                 <Route path="forgotpw" element={<ForgotPW />} />
               </Routes>
+            </AllDBdataContext.Provider>
           </SumDataContext.Provider>
         </DBdataContext.Provider>
       </SearchDataContext.Provider>

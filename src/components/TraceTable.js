@@ -76,9 +76,6 @@ export default function TraceTable() {
         <AddTable />
         <AddTable />
         <AddTable />
-        <AddTable />
-        <AddTable />
-        <AddTable />
         {/* {table.map((item, idx) => (
           <>
             <AddTable key={idx} />

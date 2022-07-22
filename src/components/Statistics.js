@@ -106,6 +106,8 @@ export default function Statistics() {
           <br />
           <br />
           <TitleTextStyle>전국 {searchData.userValue} 시세</TitleTextStyle>
+          <br />
+
           <ChartStyle>
             <PriceChart /> {/*동적으로 데이터 변경*/}
           </ChartStyle>
