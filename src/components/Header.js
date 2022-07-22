@@ -90,6 +90,7 @@ export default function Header() {
     // setDBdata(dummydata);
     // setAllDBdata(dummydata);
     //더미더미
+    navigate("/statistics");
   };
   const LogOut = () => {
     const data = "/auth/logout";
